@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BiRAGAS — Comprehensive Investor Q&amp;A | Ayass BioScience</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#09090b;--bg2:#111114;--bg3:#18181c;--bg4:#1e1e24;
+  --surface:#222228;--surface2:#2a2a32;
+  --text:#f4f4f5;--text2:#a1a1aa;--text3:#71717a;
+  --accent:#6366f1;--accent2:#818cf8;--accent3:#a5b4fc;
+  --cyan:#22d3ee;--emerald:#34d399;--amber:#fbbf24;--rose:#fb7185;
+  --purple:#a855f7;
+  --grad1:linear-gradient(135deg,#6366f1,#8b5cf6,#a855f7);
+  --grad2:linear-gradient(135deg,#06b6d4,#3b82f6,#6366f1);
+  --grad3:linear-gradient(135deg,#10b981,#06b6d4,#3b82f6);
+  --glass:rgba(255,255,255,.04);--glass2:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.1);
+  --radius:16px;--radius-sm:10px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
+a{color:var(--accent2);text-decoration:none;transition:color .2s}
+a:hover{color:var(--accent3)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:.8rem 0;background:rgba(9,9,11,.85);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:.6rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--grad1);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-right a{font-size:.8rem;color:var(--text2);font-weight:500}
+.nav-right a:hover{color:var(--text)}
+.nav-cta{padding:.45rem 1.1rem;border-radius:50px;background:var(--grad1);color:#fff!important;font-weight:600;font-size:.8rem}
+
+/* HERO */
+.hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:120%;height:70%;background:radial-gradient(ellipse,rgba(99,102,241,.1) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem .35rem .5rem;border-radius:50px;background:var(--glass2);border:1px solid var(--border2);margin-bottom:1.5rem;font-size:.75rem;color:var(--text2)}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--emerald);box-shadow:0 0 10px rgba(52,211,153,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.2rem,5vw,4.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:1.25rem}
+.hero p{font-size:clamp(.95rem,1.5vw,1.15rem);color:var(--text2);max-width:680px;margin:0 auto;line-height:1.7}
+.gradient-text{background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-2{background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* TOC */
+.toc{max-width:1000px;margin:0 auto;padding:3rem 2rem 5rem}
+.toc h2{font-size:1.5rem;font-weight:700;margin-bottom:2rem;text-align:center}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.75rem}
+.toc-item{display:flex;gap:.75rem;align-items:start;padding:.85rem 1rem;border-radius:var(--radius-sm);background:var(--glass);border:1px solid var(--border);transition:all .2s;cursor:pointer;text-decoration:none;color:var(--text)}
+.toc-item:hover{border-color:var(--accent);background:rgba(99,102,241,.05);transform:translateY(-2px)}
+.toc-num{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--grad1);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff}
+.toc-label{font-size:.82rem;font-weight:500;line-height:1.4}
+.toc-section{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:.15rem;font-weight:600}
+
+/* SECTION HEADERS */
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);max-width:600px;margin:0 auto}
+
+/* QA SECTIONS */
+.qa-section{max-width:1000px;margin:0 auto;padding:clamp(4rem,8vw,7rem) 2rem}
+.qa-header{margin-bottom:2.5rem}
+.qa-section-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:.75rem}
+.qa-number{font-size:clamp(1rem,2vw,1.25rem);font-weight:800;color:var(--accent2);margin-bottom:.5rem}
+.qa-question{font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:1rem}
+.qa-intro{font-size:1.05rem;color:var(--text2);line-height:1.8;border-left:3px solid var(--accent);padding-left:1.25rem;margin-bottom:2rem}
+.qa-body{font-size:.95rem;color:var(--text2);line-height:1.8}
+.qa-body p{margin-bottom:1.25rem}
+.qa-body strong{color:var(--text);font-weight:600}
+.qa-body em{color:var(--text2);font-style:italic}
+
+/* PARTS / SUB-HEADERS */
+.part-header{font-size:1.15rem;font-weight:700;color:var(--text);margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.sub-header{font-size:1rem;font-weight:600;color:var(--cyan);margin:2rem 0 .75rem}
+
+/* TABLES */
+.qa-table-wrap{overflow-x:auto;margin:1.5rem 0;border-radius:var(--radius);border:1px solid var(--border)}
+.qa-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.qa-table thead th{background:var(--bg3);padding:.85rem 1rem;text-align:left;font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text2);border-bottom:1px solid var(--border);white-space:nowrap}
+.qa-table tbody td{padding:.85rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+.qa-table tbody tr:hover td{background:var(--glass)}
+.qa-table tbody tr:last-child td{border-bottom:none}
+.qa-table .hl{color:var(--text);font-weight:500}
+.chk{color:var(--emerald);font-weight:700}
+.no{color:var(--rose);font-weight:700}
+
+/* BULLETS */
+.qa-body ul{margin:1rem 0 1.5rem 0;list-style:none}
+.qa-body ul li{padding:.4rem 0 .4rem 1.5rem;position:relative;line-height:1.7}
+.qa-body ul li::before{content:'';position:absolute;left:0;top:.85rem;width:6px;height:6px;border-radius:50%;background:var(--accent2)}
+
+/* CALLOUT BOXES */
+.callout{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.75rem;margin:1.5rem 0}
+.callout.accent{border-left:3px solid var(--accent)}
+.callout.emerald{border-left:3px solid var(--emerald)}
+.callout.amber{border-left:3px solid var(--amber)}
+.callout.rose{border-left:3px solid var(--rose)}
+.callout.cyan{border-left:3px solid var(--cyan)}
+.callout-title{font-weight:700;font-size:1rem;margin-bottom:.5rem;color:var(--text)}
+
+/* INVESTOR BOTTOM LINE */
+.bottom-line{background:linear-gradient(135deg,rgba(99,102,241,.06),rgba(34,211,238,.04));border:1px solid rgba(99,102,241,.15);border-radius:var(--radius);padding:2rem;margin:2rem 0}
+.bottom-line-title{font-weight:700;font-size:1.05rem;color:var(--accent2);margin-bottom:.75rem}
+
+/* EXECUTIVE SUMMARY */
+.exec-summary{max-width:1000px;margin:0 auto;padding:5rem 2rem;text-align:center}
+.exec-card{background:linear-gradient(135deg,rgba(99,102,241,.06),rgba(52,211,153,.04));border:1px solid rgba(99,102,241,.2);border-radius:var(--radius);padding:clamp(2rem,5vw,3.5rem);max-width:800px;margin:0 auto}
+.exec-checks{display:flex;flex-direction:column;gap:.6rem;text-align:left;max-width:650px;margin:1.5rem auto 0}
+.exec-check{display:flex;align-items:start;gap:.75rem;font-size:.92rem}
+.exec-check .mark{color:var(--emerald);font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
+
+/* FOOTER */
+footer{padding:3rem 2rem 2rem;border-top:1px solid var(--border);text-align:center;font-size:.8rem;color:var(--text3)}
+footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.15);border-radius:var(--radius-sm);padding:1rem 1.5rem;max-width:800px;margin:2rem auto;text-align:left;font-size:.75rem;color:var(--amber);line-height:1.7}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:1.2rem;cursor:pointer;opacity:0;transition:all .3s;z-index:999}
+.back-top.show{opacity:1}
+.back-top:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(25px);transition:opacity .6s,transform .6s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:600px){
+  .toc-grid{grid-template-columns:1fr}
+  .nav-right{gap:.75rem}
+  .qa-table{font-size:.75rem}
+  .qa-table thead th,.qa-table tbody td{padding:.6rem .5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+  <div class="nav-logo"><div class="logo-mark">A</div>Ayass BioScience</div>
+  <div class="nav-right">
+    <a href="#toc">Contents</a>
+    <a href="#exec">Summary</a>
+    <a href="mailto:contact@ayassbioscience.com" class="nav-cta">Contact</a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div>
+  <div class="hero-badge"><span class="dot"></span> Series A Fundraising &mdash; Confidential &mdash; 2025</div>
+  <h1><span class="gradient-text">BiRAGAS</span> Platform<br><span style="font-size:.45em;font-weight:400;color:var(--text2)">Comprehensive Investor Review &amp; Due Diligence Q&amp;A</span></h1>
+  <p>Biological Retrieval-Augmented Generation Assessment System<br><strong style="color:var(--text)">Dr. Mohamad Ammar Ayass, MD, FCCP</strong> &nbsp;|&nbsp; Founder &amp; CEO<br>contact@ayassbioscience.com &nbsp;|&nbsp; Frisco, Texas</p>
+</div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<div id="toc" class="toc fade-in">
+<h2>Table of Contents</h2>
+<div class="toc-grid">
+  <a href="#q1" class="toc-item"><div class="toc-num">1</div><div><div class="toc-section">Section 1: Technology</div><div class="toc-label">What exactly is BiRAGAS, and why is it fundamentally different?</div></div></a>
+  <a href="#q2" class="toc-item"><div class="toc-num">2</div><div><div class="toc-section">Section 1: Technology</div><div class="toc-label">How does the PSI (Pathway-Signal Integration) Framework work?</div></div></a>
+  <a href="#q3" class="toc-item"><div class="toc-num">3</div><div><div class="toc-section">Section 1: Technology</div><div class="toc-label">What is the AI hallucination problem in biology, and how does BiRAGAS solve it?</div></div></a>
+  <a href="#q4" class="toc-item"><div class="toc-num">4</div><div><div class="toc-section">Section 1: Technology</div><div class="toc-label">What are the 7 Intent Modules?</div></div></a>
+  <a href="#q5" class="toc-item"><div class="toc-num">5</div><div><div class="toc-section">Section 2: Market</div><div class="toc-label">What is the total addressable market?</div></div></a>
+  <a href="#q6" class="toc-item"><div class="toc-num">6</div><div><div class="toc-section">Section 2: Market</div><div class="toc-label">Who are BiRAGAS&rsquo;s direct competitors?</div></div></a>
+  <a href="#q7" class="toc-item"><div class="toc-num">7</div><div><div class="toc-section">Section 2: Market</div><div class="toc-label">What Blue Ocean opportunities in precision nephrology?</div></div></a>
+  <a href="#q8" class="toc-item"><div class="toc-num">8</div><div><div class="toc-section">Section 3: Regulatory</div><div class="toc-label">How does BiRAGAS align with FDA&rsquo;s requirements?</div></div></a>
+  <a href="#q9" class="toc-item"><div class="toc-num">9</div><div><div class="toc-section">Section 3: Regulatory</div><div class="toc-label">What is the IP strategy protecting BiRAGAS?</div></div></a>
+  <a href="#q10" class="toc-item"><div class="toc-num">10</div><div><div class="toc-section">Section 4: Business</div><div class="toc-label">What are the revenue streams and financial model?</div></div></a>
+  <a href="#q11" class="toc-item"><div class="toc-num">11</div><div><div class="toc-section">Section 4: Business</div><div class="toc-label">What partnerships are in place?</div></div></a>
+  <a href="#q12" class="toc-item"><div class="toc-num">12</div><div><div class="toc-section">Section 5: Team</div><div class="toc-label">What is the founder&rsquo;s background?</div></div></a>
+  <a href="#q13" class="toc-item"><div class="toc-num">13</div><div><div class="toc-section">Section 5: Team</div><div class="toc-label">What are the key risks and mitigations?</div></div></a>
+  <a href="#q14" class="toc-item"><div class="toc-num">14</div><div><div class="toc-section">Section 6: Investment</div><div class="toc-label">Why is now the right time to invest?</div></div></a>
+  <a href="#q15" class="toc-item"><div class="toc-num">15</div><div><div class="toc-section">Section 6: Investment</div><div class="toc-label">What does success look like at 3 and 5 years?</div></div></a>
+  <a href="#q16" class="toc-item"><div class="toc-num">16</div><div><div class="toc-section">Section 6: Investment</div><div class="toc-label">What is the exit strategy?</div></div></a>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: TECHNOLOGY & SCIENTIFIC FOUNDATION -->
+<!-- ============================================================ -->
+
+<!-- Q1 -->
+<div id="q1" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 1: Technology &amp; Scientific Foundation</div>
+  <div class="qa-number">Q1</div>
+  <div class="qa-question">What exactly is BiRAGAS, and why is it fundamentally different from existing bioinformatics tools?</div>
+</div>
+<div class="qa-intro">BiRAGAS &mdash; the Biological Retrieval-Augmented Generation Assessment System &mdash; is a first-of-its-kind agentic, multi-modal AI platform purpose-built to perform molecule-to-molecule causal inference from multi-omics patient data. It is not a data visualization tool, a statistical association engine, a differential expression calculator, or a genome browser. It is a <strong>mechanistic discovery engine</strong> &mdash; the only platform in existence that autonomously transforms raw biological measurements into directed, causal molecular proof suitable for FDA regulatory submissions.</div>
+<div class="qa-body">
+
+<div class="part-header">Part I: The Epistemological Crisis in Modern Bioinformatics</div>
+<p>The entire field of computational bioinformatics &mdash; from genome-wide association studies (GWAS) to bulk RNA sequencing differential expression analysis to single-cell clustering &mdash; operates within a single, deeply limiting paradigm: <strong>correlation</strong>. These tools measure which molecular entities change together, which genes activate simultaneously, which proteins cluster with which clinical outcomes. They answer the question: &ldquo;What is different between sick and healthy?&rdquo;</p>
+<p><strong>This is the wrong question.</strong> And the pharmaceutical industry&rsquo;s catastrophic clinical trial failure rate &mdash; 90% for most therapeutic categories &mdash; is the direct consequence of building drug development programs on correlational answers to the wrong question.</p>
+
+<div class="callout rose">
+<div class="callout-title">The $500 Billion Correlation Problem</div>
+<p style="margin:0;font-size:.9rem;color:var(--text2)">The pharmaceutical industry spends approximately <strong style="color:var(--text)">$2.6 billion</strong> to bring a single drug to market &mdash; and <strong style="color:var(--rose)">90% of drug candidates that enter clinical trials fail</strong>. The #1 cause of Phase II and Phase III clinical trial failure is <em>lack of efficacy</em>, meaning the biological target chosen for therapeutic intervention does not actually cause the disease in the patient population studied. This is not a clinical trial design failure. It is a <strong style="color:var(--text)">biomarker discovery failure</strong> &mdash; specifically, the failure to distinguish molecular causes from molecular consequences.</p>
+</div>
+
+<p>Consider a concrete example: In chronic kidney disease research, dozens of genes are differentially expressed in diseased vs. healthy kidney tissue. Conventional tools generate a list of these genes and rank them by statistical significance. The research team then chooses a gene &mdash; say, TGFB1 &mdash; for therapeutic targeting based on its high expression in diseased tissue. But TGFB1 upregulation may be a <em>consequence</em> of inflammation already underway, not a causal driver. Targeting it with an antibody or small molecule produces no clinical benefit &mdash; and another drug fails at Phase II.</p>
+<p>BiRAGAS asks and answers the categorically different question: <strong>&ldquo;Which molecular entity is causing TGFB1 to be upregulated, and which downstream events does TGFB1 upregulation actually cause?&rdquo;</strong> This distinction &mdash; between correlation and causation, between passenger and driver &mdash; is the entire difference between a drug discovery program that succeeds and one that fails.</p>
+
+<div class="part-header">Part II: Correlation vs. Causation &mdash; Why the Difference Is Worth Billions</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Dimension</th><th>Correlation-Based Tools (Industry Standard)</th><th style="color:var(--accent2)">BiRAGAS Causal Inference (Ayass)</th></tr></thead>
+<tbody>
+<tr><td class="hl">Core Question</td><td>&ldquo;Which genes are different between sick and healthy patients?&rdquo;</td><td>&ldquo;Which gene is driving the molecular cascade that causes disease in this patient?&rdquo;</td></tr>
+<tr><td class="hl">Output Type</td><td>Ranked list of differentially expressed genes or associated variants</td><td>Directed causal graph (DAG) showing precise mechanistic pathways with confidence scores</td></tr>
+<tr><td class="hl">Biological Validity</td><td>Identifies both causal drivers AND coincidental passengers &mdash; cannot distinguish between them</td><td>Explicitly separates causal drivers (targets) from molecular passengers (bystanders)</td></tr>
+<tr><td class="hl">Directionality</td><td>No &mdash; gene A and gene B are correlated, but which causes which is unknown</td><td>Yes &mdash; every causal edge has a determined direction: Gene A CAUSES Gene B&rsquo;s activation</td></tr>
+<tr><td class="hl">FDA Acceptability</td><td>Produces associative evidence; requires substantial additional mechanistic validation</td><td>Produces mechanistic causal evidence directly architected to satisfy FDA BQP standards</td></tr>
+<tr><td class="hl">Drug Target Quality</td><td>High false discovery rate &mdash; many targets fail in trials because they are passengers</td><td>Low false discovery rate &mdash; confidence-gated causal edges represent genuine molecular drivers</td></tr>
+<tr><td class="hl">Patient Stratification</td><td>Groups by phenotypic similarity &mdash; biological meaning often unclear</td><td>Stratifies by causal molecular mechanism &mdash; groups sharing a causal driver will respond to targeted interventions</td></tr>
+<tr><td class="hl">Hallucination Risk</td><td>No mitigation &mdash; frequently generates statistically significant but biologically meaningless associations</td><td>Four-layer hallucination mitigation architecture prevents biologically invalid inferences</td></tr>
+<tr><td class="hl">Reproducibility</td><td>Variable &mdash; different pipelines produce different gene lists</td><td>Structurally reproducible &mdash; multi-agent consensus architecture produces consistent outputs</td></tr>
+<tr><td class="hl">Regulatory Pathway</td><td>Cannot directly produce FDA-ready mechanistic dossiers</td><td>Directly generates FDA-aligned mechanistic evidence packages through the Explain Intent Module</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part-header">Part III: The BiRAGAS Architecture &mdash; Six Interlocking Innovation Layers</div>
+<p>BiRAGAS achieves its causal inference capability through six interlocking architectural innovations, each of which independently represents a significant technical advancement, and which together create a platform capability that no competitor has assembled.</p>
+
+<div class="sub-header">LAYER 1: Causal Directed Acyclic Graphs (DAGs) &mdash; The Core Inference Engine</div>
+<p>A Directed Acyclic Graph (DAG) is a mathematical structure consisting of nodes (biological entities) and directed edges (causal relationships with defined direction and magnitude). BiRAGAS constructs causal DAGs from multi-omics patient data using three complementary mathematical frameworks applied simultaneously:</p>
+<ul>
+<li><strong>Bayesian Network Structure Learning:</strong> Score-based algorithms (PC, GES, NOTEARS) identify the directed graph structure most likely to have generated the observed data by testing conditional independence relationships that can only be explained by causal structure.</li>
+<li><strong>Structural Equation Modeling (SEM):</strong> Fits structural equations to quantify the strength and direction of each causal relationship &mdash; the causal effect, not mere association.</li>
+<li><strong>Mendelian Randomization (MR) Validation:</strong> Uses genetic variants (SNPs) as instrumental variables &mdash; natural experiments that distinguish causal from confounded relationships. Automated from the 8.6M vector knowledge base.</li>
+</ul>
+
+<div class="callout accent">
+<div class="callout-title">Causal DAG Example: Diabetic Nephropathy Progression</div>
+<p style="margin:0;font-size:.9rem;color:var(--text2);font-family:monospace;line-height:2">UMOD dysregulation &rarr; NLRP3 inflammasome activation &rarr; IL-1&beta; secretion<br>&darr;<br>Podocyte apoptosis &rarr; GFR decline &rarr; CKD Stage Progression<br><span style="font-size:.8rem;color:var(--text3)">Each arrow = tested, validated causal relationship with confidence &ge;0.65</span></p>
+</div>
+
+<div class="sub-header">LAYER 2: Biological RAG (Bio-RAG) &mdash; 8.6 Million Vector Evidence Anchor</div>
+<p>Every causal inference is cross-referenced against 8 major biological knowledge sources simultaneously:</p>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Knowledge Source</th><th>Coverage</th><th>Role in Causal Inference</th></tr></thead>
+<tbody>
+<tr><td class="hl">Gene Ontology (GO)</td><td>~50,000 annotations</td><td>Biological process, molecular function, cellular component context</td></tr>
+<tr><td class="hl">KEGG Pathway</td><td>&gt;500 pathways</td><td>Validates causal chains follow known biochemical pathway logic</td></tr>
+<tr><td class="hl">Reactome</td><td>&gt;13,000 reactions</td><td>Cross-references causal edges against curated human reaction networks</td></tr>
+<tr><td class="hl">STRING</td><td>&gt;11M protein interactions</td><td>Physical interaction substrate that causal edges must traverse</td></tr>
+<tr><td class="hl">UniProt / Swiss-Prot</td><td>&gt;570,000 proteins</td><td>Validates protein identities, functional annotations, PTM sites</td></tr>
+<tr><td class="hl">PubMed / PubTator</td><td>&gt;35M publications</td><td>Literature-derived co-occurrence and experimental evidence</td></tr>
+<tr><td class="hl">ClinVar / OMIM</td><td>&gt;500,000 associations</td><td>Enables MR instrumental variable selection</td></tr>
+<tr><td class="hl">PharmGKB</td><td>&gt;50,000 drug-gene relationships</td><td>Contextualizes causal nodes within therapeutic druggability landscape</td></tr>
+</tbody>
+</table>
+</div>
+<p>This 8.6 million vector biological knowledge base represents years of curation work and constitutes one of BiRAGAS&rsquo;s most durable competitive moats. It cannot be quickly replicated.</p>
+
+<div class="sub-header">LAYER 3: 10 Specialized AI Agents &mdash; Agentic Multi-Expert Architecture</div>
+<p>BiRAGAS is built on a multi-agent agentic AI architecture in which 10 specialized agents each orchestrate the end-to-end causal discovery workflow. A monolithic system mixes all decisions into an opaque black box. A multi-agent system assigns each decision to a specialized agent with a defined scope &mdash; creating a transparent audit trail.</p>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Agent</th><th>Domain</th><th>Function</th></tr></thead>
+<tbody>
+<tr><td class="hl">Data Ingestion &amp; Normalization</td><td>Preprocessing</td><td>Ingests RNA-seq, proteomic, metabolomic data; batch correction, QC filtering</td></tr>
+<tr><td class="hl">Pathway Enrichment</td><td>Pathway analysis</td><td>Applies PSI Framework; maps molecules to pathway contexts</td></tr>
+<tr><td class="hl">Causal Edge Detection</td><td>Bayesian inference, SEM</td><td>Identifies statistically supported directed causal edges</td></tr>
+<tr><td class="hl">RAG Grounding</td><td>Knowledge retrieval</td><td>Cross-references edges against 8.6M vector knowledge base</td></tr>
+<tr><td class="hl">Mendelian Randomization</td><td>Causal validation</td><td>Identifies genetic instruments; validates causal directions via MR</td></tr>
+<tr><td class="hl">Hallucination Mitigation</td><td>AI output validation</td><td>Reviews for biological plausibility violations; cross-validates</td></tr>
+<tr><td class="hl">Triage</td><td>Scoring &amp; prioritization</td><td>Composite confidence scoring; enforces &ge;0.65 threshold gate</td></tr>
+<tr><td class="hl">CDx Output</td><td>Regulatory diagnostics</td><td>Converts biomarker signatures to CDx panel specifications</td></tr>
+<tr><td class="hl">Explain (NL)</td><td>Scientific communication</td><td>Generates human-readable mechanistic explanations</td></tr>
+<tr><td class="hl">Counterfactual &amp; Simulation</td><td>Causal modeling</td><td>Simulates hypothetical interventions using do-calculus</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sub-header">LAYER 4: Disease-Label Independence</div>
+<p>BiRAGAS eliminates the ecological fallacy by treating disease labels only as cohort identifiers &mdash; not as the causal anchors of the analytical model. Causal inference is performed molecule-to-molecule. This means BiRAGAS can identify causal drivers that are <strong>not even differentially expressed at the population level</strong> &mdash; because they may drive disease only in a specific molecular subgroup. This is a major source of novel targets inaccessible to any competitor.</p>
+
+<div class="sub-header">LAYER 5: Confidence-Gated Output Architecture (&ge;0.65)</div>
+<p>The composite confidence score integrates five independent evidence streams:</p>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Component</th><th>Weight</th><th>What It Measures</th></tr></thead>
+<tbody>
+<tr><td class="hl">Statistical Causal Evidence (SEM)</td><td>30%</td><td>Strength and significance of structural equation coefficient</td></tr>
+<tr><td class="hl">Bio Knowledge Base Support (RAG)</td><td>25%</td><td>Breadth and quality of supporting evidence across 8.6M vectors</td></tr>
+<tr><td class="hl">Mendelian Randomization (MR)</td><td>25%</td><td>Genetic instrumental variable evidence for causal directionality</td></tr>
+<tr><td class="hl">Multi-Agent Cross-Validation</td><td>15%</td><td>Degree of agreement across independent analytical agents</td></tr>
+<tr><td class="hl">Biological Plausibility</td><td>5%</td><td>Assessed plausibility given known biochemistry</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sub-header">LAYER 6: Multi-Modal Multi-Omics Integration</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Omics Layer</th><th>Data Types</th><th>Causal Role</th></tr></thead>
+<tbody>
+<tr><td class="hl">Genomics / Epigenomics</td><td>GWAS, WGS, WES, SNP arrays, ATAC-seq, ChIP-seq</td><td>Genetic instruments for MR; upstream causal anchors</td></tr>
+<tr><td class="hl">Transcriptomics</td><td>Bulk RNA-seq, scRNA-seq, spatial, long-read</td><td>Primary signal layer for causal edge detection</td></tr>
+<tr><td class="hl">Proteomics</td><td>MS-based, Olink, SomaScan</td><td>Validates transcriptomic findings propagate to protein level</td></tr>
+<tr><td class="hl">Metabolomics</td><td>LC-MS/MS, NMR, targeted panels</td><td>Downstream phenotype layer; complete drug-to-outcome chains</td></tr>
+<tr><td class="hl">Clinical Phenotypes</td><td>EHR, labs, imaging, patient-reported</td><td>Distal nodes connecting molecular drivers to clinical outcomes</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part-header">Part IV: What This Architecture Means for Drug Discovery Economics</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>BiRAGAS Feature</th><th>Failure Mode Addressed</th><th>Economic Value</th></tr></thead>
+<tbody>
+<tr><td class="hl">Causal DAGs</td><td>Targeting passengers &rarr; Phase II/III failure</td><td>Each Phase II failure avoided saves $250&ndash;500M</td></tr>
+<tr><td class="hl">Bio-RAG grounding</td><td>AI hallucination of impossible relationships</td><td>Saves 2&ndash;5 years of R&amp;D per program</td></tr>
+<tr><td class="hl">10-agent architecture</td><td>Analytical irreproducibility</td><td>Removes #2 cause of biomarker qualification rejection</td></tr>
+<tr><td class="hl">Disease-label independence</td><td>Missing sub-population drivers</td><td>First-in-class opportunities with 10x royalty potential</td></tr>
+<tr><td class="hl">Confidence gating</td><td>False positive biomarkers &rarr; failed CDx</td><td>Each CDx failure avoided saves $50&ndash;150M</td></tr>
+<tr><td class="hl">Multi-omics integration</td><td>Incomplete drug mechanism understanding</td><td>Anticipate and mitigate off-target effects pre-trials</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="bottom-line">
+<div class="bottom-line-title">The Definitive Investor Bottom Line</div>
+<p style="font-size:.92rem;color:var(--text2);line-height:1.8;margin:0">The pharmaceutical industry loses <strong style="color:var(--text)">$2.3 trillion in failed drug development every decade</strong> &mdash; primarily because it targets molecular passengers instead of molecular drivers. BiRAGAS is the only platform that solves this at the biological root: by replacing statistical correlation with mechanistic causal proof, grounding every inference in 8.6 million biological vectors, cross-validating through 10 specialized agents, and gating outputs at a minimum confidence threshold calibrated to maximize discovery quality. The result is not just better data. It is <strong style="color:var(--accent2)">the right answer</strong> &mdash; the causal molecular truth that transforms a drug development program from a high-probability failure into a high-probability success.</p>
+</div>
+
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q2 -->
+<div id="q2" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 1: Technology &amp; Scientific Foundation</div>
+  <div class="qa-number">Q2</div>
+  <div class="qa-question">How does the PSI (Pathway-Signal Integration) Framework work, and why does it matter?</div>
+</div>
+<div class="qa-intro">The Pathway-Signal Integration (PSI) Framework is BiRAGAS&rsquo;s proprietary analytical engine that resolves one of the most persistent and costly failures in computational biology: the inability to simultaneously honor what biology already knows (curated pathway knowledge) and what a specific patient cohort is actually telling us in its molecular data (empirical signal evidence).</div>
+<div class="qa-body">
+
+<div class="part-header">Part I: The Structural Failure of Conventional Pathway Analysis</div>
+<p>The standard workflow &mdash; differential expression &rarr; pathway enrichment (GSEA, Enrichr, IPA) &rarr; report top pathways &mdash; has four fundamental structural failures:</p>
+<ul>
+<li><strong>Failure 1: Top-Down Confirmation Bias</strong> &mdash; Conventional tools can only find what they already know. Novel mechanisms not yet in KEGG or Reactome are invisible. These are precisely the first-in-class targets with highest commercial value.</li>
+<li><strong>Failure 2: The Gene List Boundary Problem</strong> &mdash; Arbitrary p-value cutoffs (p &lt; 0.05) create massive analytical instability. A gene with p = 0.051 is excluded while p = 0.049 is included &mdash; identical biology, categorically different treatment.</li>
+<li><strong>Failure 3: Pathway Independence Assumption</strong> &mdash; Tools treat pathways as isolated silos. They cannot determine which pathway is upstream (primary driver) vs. downstream (secondary consequence).</li>
+<li><strong>Failure 4: Population-Level Averaging</strong> &mdash; Erases molecular heterogeneity within patient groups. The &ldquo;top pathway&rdquo; for the population may represent no individual patient&rsquo;s actual disease mechanism.</li>
+</ul>
+
+<div class="part-header">Part II: The PSI Framework Architecture &mdash; Five Analytical Stages</div>
+<div class="callout cyan">
+<div class="callout-title">Stage 1: Bottom-Up Signal Discovery</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">Three complementary methods applied simultaneously: <strong style="color:var(--text)">WGCNA</strong> (weighted gene co-expression network analysis), <strong style="color:var(--text)">ICA</strong> (independent component analysis), and <strong style="color:var(--text)">MOFA+</strong> (multi-omics factor analysis). Discovers novel molecular co-activation patterns entirely from patient data, without reference to any pathway database.</p>
+</div>
+<div class="callout cyan">
+<div class="callout-title">Stage 2: Top-Down Pathway Projection</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">Projects each known pathway from 5 databases (KEGG, Reactome, GO-BP, WikiPathways, NCI PID) onto Stage 1 modules using weighted overlap scores accounting for core gene coverage, directionality coherence, and reaction completeness.</p>
+</div>
+<div class="callout cyan">
+<div class="callout-title">Stage 3: Signal-Pathway Integration Scoring</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">The computational heart of PSI. Composite score from 5 sub-scores: Empirical Signal Coherence (30%), Pathway Knowledge Support (25%), Cross-Omics Concordance (20%), Directionality Coherence (15%), Novel Biology Signal (10%). PSI &ge;0.70 = high confidence; 0.40&ndash;0.70 = moderate; &lt;0.40 = excluded.</p>
+</div>
+<div class="callout cyan">
+<div class="callout-title">Stage 4: Cross-Pathway Interdependency Mapping</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">Constructs a directed pathway interaction network: shared node identification, pathway regulatory hierarchy, and pathway crosstalk quantification. Determines which pathway is upstream (causal) vs. downstream (consequence).</p>
+</div>
+<div class="callout cyan">
+<div class="callout-title">Stage 5: Novel Biology Flagging &amp; Prioritization</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">Identifies molecular signals with no match in curated databases. Classified as &ldquo;Orphan Modules&rdquo; with literature pre-mining and causal priority scoring. Every first-in-class drug is based on novel biology &mdash; PSI systematically discovers it.</p>
+</div>
+
+<div class="part-header">Part III: PSI vs. Conventional Pathway Analysis</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Dimension</th><th>GSEA / Enrichr / IPA</th><th style="color:var(--accent2)">PSI Framework</th></tr></thead>
+<tbody>
+<tr><td class="hl">Direction</td><td>Top-down only</td><td>Bidirectional: bottom-up + top-down simultaneously</td></tr>
+<tr><td class="hl">Input</td><td>Binary gene list (in/out)</td><td>Continuous signal matrix &mdash; no arbitrary cutoff</td></tr>
+<tr><td class="hl">Novel Biology</td><td>Impossible</td><td>Core capability with Novel Biology Score</td></tr>
+<tr><td class="hl">Pathway Independence</td><td>Treats as independent</td><td>Directed cross-pathway interaction network</td></tr>
+<tr><td class="hl">Patient Heterogeneity</td><td>Population averaging</td><td>Sub-group level analysis</td></tr>
+<tr><td class="hl">Cross-Omics</td><td>Transcriptomics only (mostly)</td><td>Integrated with Cross-Omics Concordance Scoring</td></tr>
+<tr><td class="hl">Reproducibility</td><td>Variable with threshold changes</td><td>Stable continuous scoring</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part-header">Part IV: PSI in Action &mdash; IgA Nephropathy Walkthrough</div>
+<p>In a cohort of 150 IgAN patients vs. 80 controls:</p>
+<ul>
+<li><strong>Conventional GSEA:</strong> Returns &ldquo;Complement and Coagulation Cascades&rdquo; as top hit. 20 enriched pathways with no information about which is primary. All patients averaged together. No novel biology.</li>
+<li><strong>PSI Framework:</strong> Identifies 3 patient sub-groups (Glycosylation-dominant 32%, Complement-dominant 47%, Podocyte-fibrosis-dominant 21%). Discovers a novel orphan module of 23 IgA1 O-glycan genes upstream of complement. Three precision programs with three CDx opportunities.</li>
+</ul>
+
+<div class="bottom-line">
+<div class="bottom-line-title">The PSI Investor Bottom Line</div>
+<p style="font-size:.92rem;color:var(--text2);line-height:1.8;margin:0">PSI is a fundamentally different class of pathway analysis that simultaneously reads patient data from the bottom up and validates from the top down. It delivers dramatically reduced false discovery rate, systematic novel biology identification, precise patient sub-group stratification, and a cross-pathway hierarchy that tells drug developers exactly which pathway to target first. Its 5-stage architecture represents <strong style="color:var(--accent2)">15 years of iterative scientific development that cannot be quickly replicated</strong>.</p>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q3 -->
+<div id="q3" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 1: Technology &amp; Scientific Foundation</div>
+  <div class="qa-number">Q3</div>
+  <div class="qa-question">What is the AI hallucination problem in biology, and how does BiRAGAS solve it?</div>
+</div>
+<div class="qa-intro">AI hallucination &mdash; the generation of confident, coherent, but factually incorrect outputs &mdash; represents the single greatest technical risk in applying AI to regulated biological domains. In drug discovery, a hallucinated gene-disease causal relationship that passes undetected is a multi-hundred-million-dollar catastrophe. BiRAGAS is the <strong>only</strong> biomarker discovery platform with a dedicated, multi-layer hallucination mitigation architecture.</div>
+<div class="qa-body">
+
+<div class="part-header">Part I: Why Biological Hallucination Is Uniquely Dangerous</div>
+<ul>
+<li><strong>Scientifically Plausible by Construction:</strong> Biological hallucinations are terminologically precise and scientifically coherent &mdash; yet factually wrong. A pharmaceutical team could act on them for years before the error is discovered.</li>
+<li><strong>Amplified by Data Complexity:</strong> 20,000 genes = ~200M pairwise tests = ~10M spurious significant results at p &lt; 0.05 by chance alone. AI systems learn many of these as &ldquo;real.&rdquo;</li>
+<li><strong>Reinforced by Training Biases:</strong> Positive result bias, citation amplification bias, and research fashion bias in biomedical literature systematically inflate false associations.</li>
+</ul>
+
+<div class="part-header">Part II: Five Categories of Biological AI Hallucination</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Category</th><th>Definition</th><th>Detection</th><th>Harm</th></tr></thead>
+<tbody>
+<tr><td class="hl">1. Fabricated Causal Association</td><td>AI asserts a direct causal relationship with no experimental validation</td><td style="color:var(--rose)">VERY HIGH</td><td style="color:var(--rose)">CRITICAL ($250M&ndash;$1B)</td></tr>
+<tr><td class="hl">2. Confounded Causal Inference</td><td>Real association caused by hidden third variable</td><td style="color:var(--rose)">HIGH</td><td style="color:var(--rose)">CRITICAL</td></tr>
+<tr><td class="hl">3. Directionality Reversal</td><td>Correct relationship, wrong direction (A&rarr;B vs B&rarr;A)</td><td style="color:var(--rose)">HIGH</td><td style="color:var(--amber)">SEVERE</td></tr>
+<tr><td class="hl">4. Pathway-Context</td><td>Gene correctly identified but wrong pathway context for tissue/cell type</td><td style="color:var(--amber)">MEDIUM-HIGH</td><td style="color:var(--amber)">SEVERE</td></tr>
+<tr><td class="hl">5. Magnitude</td><td>Correct direction but over/under-estimated effect size</td><td>MEDIUM</td><td>MODERATE ($50&ndash;200M)</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part-header">Part III: No Existing Platform Mitigates Biological Hallucination</div>
+<p>DESeq2/edgeR compute statistics, not biology. GSEA matches against databases that themselves contain errors. AI platforms (Recursion, Insilico, BenevolentAI) inherit all training biases. LLMs (GPT-4, Med-PaLM) optimize for linguistic coherence, not biological truth. CROs apply standard pipelines subject to confirmation bias.</p>
+
+<div class="part-header">Part IV: BiRAGAS&rsquo;s Four-Layer Mitigation Architecture</div>
+<div class="callout accent">
+<div class="callout-title">Layer 1: Bio-RAG Grounding (8.6M Vectors)</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0"><strong>Gate 1A</strong> &mdash; Existence: Is the gene expressed in the relevant tissue? <strong>Gate 1B</strong> &mdash; Interaction: Any experimental evidence supporting functional interaction? <strong>Gate 1C</strong> &mdash; Literature: Co-occurrence in peer-reviewed context? <strong style="color:var(--emerald)">Reduces false positives by 60&ndash;70%</strong> before any additional layers.</p>
+</div>
+<div class="callout accent">
+<div class="callout-title">Layer 2: Multi-Agent Cross-Validation</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">10 agents apply distinct methodologies. Disagreements trigger automatic escalation to &ldquo;Disagreement Review Queue&rdquo; &mdash; never included in automated outputs until resolved. Catches confounding (Cat. 2) and directional reversals (Cat. 3).</p>
+</div>
+<div class="callout accent">
+<div class="callout-title">Layer 3: Confidence Threshold Gating (&ge;0.65)</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">Calibrated against 847 known true causal relationships and 423 known spurious associations. Achieves <strong style="color:var(--emerald)">&gt;85% precision</strong> on positives while excluding <strong style="color:var(--emerald)">&gt;90% of spurious associations</strong>.</p>
+</div>
+<div class="callout accent">
+<div class="callout-title">Layer 4: Causal Directionality Validation</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">Four independent methods: <strong>4A</strong> d-Separation testing, <strong>4B</strong> Additive Noise Models, <strong>4C</strong> Two-sample MR with MR-Egger/weighted median/MR-PRESSO, <strong>4D</strong> Temporal precedence (Granger causality). All four must agree for maximum directional confidence.</p>
+</div>
+
+<div class="part-header">Part V: The Cost of Unmitigated Hallucination</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Case</th><th>Category</th><th>Consequence</th></tr></thead>
+<tbody>
+<tr><td class="hl">CETP Inhibitors (Pfizer, Roche, Lilly, Merck) 2007&ndash;2017</td><td>Cat. 2: Confounded</td><td style="color:var(--rose)">&gt;$3B combined wasted. Pleiotropic confounding would have been flagged by BiRAGAS MR analysis.</td></tr>
+<tr><td class="hl">p38 MAPK Inhibitors (20+ companies) 2000&ndash;2015</td><td>Cat. 3: Directionality</td><td style="color:var(--rose)">Billions wasted. p38 is downstream, not primary driver. BiRAGAS hierarchy would have shown this.</td></tr>
+<tr><td class="hl">BACE1 Inhibitors (Merck, AZ, Janssen) 2012&ndash;2019</td><td>Cat. 2+5: Confounded + Magnitude</td><td style="color:var(--rose)">Billions wasted. Narrow therapeutic index would have been revealed by cross-omics substrate mapping.</td></tr>
+<tr><td class="hl">Huntingtin mTOR Programs 2010&ndash;2018</td><td>Cat. 4: Pathway-Context</td><td style="color:var(--rose)">Hundreds of millions. Cell-type-specific context was lost in population-averaged analysis.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Total: approximately <strong style="color:var(--rose)">$8&ndash;10 billion</strong> in collectively wasted pharmaceutical investment.</p>
+
+<div class="part-header">Part VI: The Competitive Moat</div>
+<ul>
+<li><strong>Domain Expertise Required:</strong> Building a biologically valid hallucination mitigation requires deep physician-scientist expertise that software companies cannot independently produce.</li>
+<li><strong>8.6M Vector Database Is Irreplaceable:</strong> Cannot be assembled by text scraping &mdash; requires expert biological judgment at every level of curation.</li>
+<li><strong>Regulatory Lock-In:</strong> Partners build regulatory submissions on BiRAGAS outputs. Switching requires re-running analysis and re-filing documents.</li>
+</ul>
+
+<div class="bottom-line">
+<div class="bottom-line-title">The Hallucination Mitigation Investor Bottom Line</div>
+<p style="font-size:.92rem;color:var(--text2);line-height:1.8;margin:0">BiRAGAS is the only platform with a dedicated four-layer hallucination mitigation architecture addressing all five categories. Bio-RAG reduces false positives by 60&ndash;70%. Multi-agent cross-validation catches confounding and directional errors. Calibrated confidence gating ensures &gt;85% precision. Four-method directionality validation eliminates the reversal errors that have cost the industry billions. <strong style="color:var(--accent2)">This architecture is not replicable quickly, is not available in any competing product, and is why BiRAGAS outputs are fundamentally more trustworthy.</strong></p>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q4 -->
+<div id="q4" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 1: Technology &amp; Scientific Foundation</div>
+  <div class="qa-number">Q4</div>
+  <div class="qa-question">What are the 7 Intent Modules, and how do they address different use cases in drug discovery?</div>
+</div>
+<div class="qa-intro">BiRAGAS is organized around 7 distinct Intent Modules &mdash; each representing a fundamentally different analytical question. This modular architecture transforms a specialized scientific platform into a versatile commercial product serving every stage of the drug development lifecycle.</div>
+<div class="qa-body">
+
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Module</th><th>Stage</th><th>Core Question</th><th>Revenue</th></tr></thead>
+<tbody>
+<tr><td class="hl">1. Discovery</td><td>Early / Target ID</td><td>What are the primary causal drivers of this disease?</td><td>$2&ndash;5M + IP sharing</td></tr>
+<tr><td class="hl">2. Directed Edge</td><td>Target Validation</td><td>Does Gene A causally drive Disease B &mdash; yes or no?</td><td>$200&ndash;500K per target</td></tr>
+<tr><td class="hl">3. Intervention</td><td>Preclinical</td><td>If we modulate Gene X, what happens downstream?</td><td>$500K&ndash;$2M + IND milestone</td></tr>
+<tr><td class="hl">4. Comparative</td><td>Biomarker / CDx</td><td>How do causal architectures differ between subgroups?</td><td>$1&ndash;3M + CDx milestones</td></tr>
+<tr><td class="hl">5. Counterfactual</td><td>Clinical Rescue</td><td>Which patients would have responded if different?</td><td>$1&ndash;3M + patent milestone</td></tr>
+<tr><td class="hl">6. Explain</td><td>Regulatory</td><td>Provide human-readable mechanistic narrative</td><td>$500K&ndash;$1.5M + retainer</td></tr>
+<tr><td class="hl">7. Standard Bio</td><td>Integration</td><td>Provide conventional DEG lists, volcano plots, etc.</td><td>Commercial on-ramp</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sub-header">Module 1: Discovery &mdash; Hypothesis-Free Causal Graph Construction</div>
+<p>Constructs complete de novo causal molecular graphs from raw multi-omics data with no a priori hypothesis. Five stages: Molecular Universe Definition (8,000&ndash;15,000 gene nodes) &rarr; Causal Candidate Pair Generation (~500K&ndash;2M pairs) &rarr; Parallel Causal Testing &rarr; Graph Assembly &amp; Pruning &rarr; Driver Prioritization. In FSGS, identified INF2 as top causal driver through a previously uncharacterized actin cytoskeletal pathway.</p>
+
+<div class="sub-header">Module 2: Directed Edge &mdash; Hypothesis-Driven Causal Validation</div>
+<p>Five independent evidence lines: SEM coefficient, MR validation, conditional independence testing, biological knowledge consistency, cross-omics corroboration. Output: Confirmed / Supported / Equivocal / Refuted / Reverse Direction. Addresses the most expensive decision in pharma R&amp;D: whether to commit $20&ndash;50M to IND-enabling studies. <strong>Highest-conversion commercial offering</strong> due to asymmetric value proposition.</p>
+
+<div class="sub-header">Module 3: Intervention &mdash; In Silico Drug Simulation</div>
+<p>Uses do-calculus (Judea Pearl) to simulate pharmacological modulation. Predicts: on-target efficacy, immediate off-target effects, cascading second/third-order perturbations, network compensation pathways, therapeutic window estimation, and biomarker response predictions. The network compensation prediction explains why drugs with strong Phase I target engagement fail Phase II.</p>
+
+<div class="sub-header">Module 4: Comparative &mdash; Precision Medicine Foundation</div>
+<p>Three modes: <strong>4A</strong> Defined subgroup comparison, <strong>4B</strong> Unsupervised molecular subgroup discovery, <strong>4C</strong> Longitudinal causal architecture tracking. Every subgroup-specific causal driver = a candidate CDx biomarker. Direct pipeline from comparative analysis to CDx product &mdash; <strong>the most commercially important workflow in BiRAGAS</strong>.</p>
+
+<div class="sub-header">Module 5: Counterfactual &mdash; Drug Rescue</div>
+<p>Applies Pearl&rsquo;s third rung of causation. For failed Phase II/III trials, identifies the molecular responder profile for enrichment re-trials. &gt;200 Phase II/III failures per year in the US alone. If 10&ndash;15% contain a recoverable responder subpopulation, the total recoverable value exceeds <strong>$20B annually</strong>. Potentially the highest-value single engagement in the portfolio.</p>
+
+<div class="sub-header">Module 6: Explain &mdash; FDA-Ready Documentation</div>
+<p>Generates mechanistic rationale sections, evidence traceability tables, biological plausibility arguments, and publication drafts. Automates months of work by PhD scientists and regulatory writers into hours. Expands BiRAGAS&rsquo;s addressable customer base to regulatory affairs professionals.</p>
+
+<div class="sub-header">Module 7: Standard Bio &mdash; Zero-Disruption Migration</div>
+<p>Provides familiar outputs (DEG lists, pathway enrichment, volcano plots) alongside BiRAGAS&rsquo;s causal analysis. The commercial on-ramp that converts the entire installed base of conventional bioinformatics users into platform customers.</p>
+
+<div class="callout emerald">
+<div class="callout-title">The 7-Module Commercial Flywheel</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">Discovery &rarr; Directed Edge &rarr; Intervention &rarr; Comparative &rarr; Explain &rarr; Counterfactual &rarr; Next Program. Cumulative: <strong style="color:var(--text)">$6&ndash;15M per disease program</strong> + $5&ndash;50M CDx milestones + royalties. Single large pharma partner = <strong style="color:var(--emerald)">$50&ndash;150M total relationship</strong>. Revenue at every milestone, aligned with scientific performance.</p>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: MARKET OPPORTUNITY & COMPETITIVE LANDSCAPE -->
+<!-- ============================================================ -->
+
+<!-- Q5 -->
+<div id="q5" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 2: Market Opportunity &amp; Competitive Landscape</div>
+  <div class="qa-number">Q5</div>
+  <div class="qa-question">What is the total addressable market &mdash; including the full AI technology market &mdash; and how does BiRAGAS access it?</div>
+</div>
+<div class="qa-intro">BiRAGAS occupies the strategic intersection of seven distinct and simultaneously expanding markets. Combined TAM exceeds <strong>$183 billion by 2030</strong>. Even capturing 1% = $1.8B revenue opportunity.</div>
+<div class="qa-body">
+
+<div class="part-header">Tier 1: Core Life Science AI Markets (Direct Revenue)</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Market</th><th>2025</th><th>2030</th><th>CAGR</th></tr></thead>
+<tbody>
+<tr><td class="hl">AI-Driven Drug Discovery</td><td>$1.4B</td><td>$9.7B</td><td style="color:var(--emerald)">47%</td></tr>
+<tr><td class="hl">Companion Diagnostics (CDx)</td><td>$8.2B</td><td>$16.4B</td><td style="color:var(--emerald)">15%</td></tr>
+<tr><td class="hl">Multi-Omics Analytics</td><td>$2.1B</td><td>$6.4B</td><td style="color:var(--emerald)">25%</td></tr>
+<tr><td class="hl">Precision Nephrology</td><td>$3.4B</td><td>$7.1B</td><td style="color:var(--emerald)">16%</td></tr>
+<tr><td class="hl">Transcriptomics</td><td>$3.2B</td><td>$8.9B</td><td style="color:var(--emerald)">23%</td></tr>
+<tr><td class="hl">Biomarker Discovery</td><td>$5.7B</td><td>$12.8B</td><td style="color:var(--emerald)">18%</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part-header">Tier 2: Broader AI Technology Markets</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Market</th><th>2025</th><th>2030</th><th>BiRAGAS Access Point</th></tr></thead>
+<tbody>
+<tr><td class="hl">AI in Healthcare</td><td>$14.6B</td><td>$102.7B</td><td>License as causal inference layer for health AI platforms</td></tr>
+<tr><td class="hl">AI Hallucination Mitigation</td><td>$1.2B</td><td>$9.8B</td><td>License architecture to regulated AI builders</td></tr>
+<tr><td class="hl">RAG Technology</td><td>$1.6B</td><td>$11.4B</td><td>Proprietary Bio-RAG for AI infrastructure companies</td></tr>
+<tr><td class="hl">Agentic AI / Multi-Agent</td><td>$0.8B</td><td>$47.1B</td><td>10-agent orchestration framework licensing</td></tr>
+<tr><td class="hl">Clinical Decision Support AI</td><td>$3.8B</td><td>$14.4B</td><td>Causal outputs power clinical decision tools</td></tr>
+<tr><td class="hl">Computational Biology Software</td><td>$4.1B</td><td>$10.7B</td><td>Platform-as-a-Service for biotech/CROs</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part-header">AI Technology Companies: Customers, Partners &amp; Potential Acquirers</div>
+
+<div class="sub-header">1. Big Tech &amp; Cloud AI Platforms</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Company</th><th>Scale</th><th>BiRAGAS Opportunity</th></tr></thead>
+<tbody>
+<tr><td class="hl">Microsoft / Azure</td><td>$3.1T</td><td>BiRAGAS as Azure AI Health module reaching thousands of hospital and pharma cloud customers</td></tr>
+<tr><td class="hl">Google / DeepMind</td><td>$2.1T</td><td>AlphaFold solves protein structure; BiRAGAS solves gene causality &mdash; complementary layers</td></tr>
+<tr><td class="hl">Amazon / AWS</td><td>$1.9T</td><td>BiRAGAS as managed service on Amazon Bedrock reaching health system customers</td></tr>
+<tr><td class="hl">NVIDIA</td><td>$2.4T</td><td>BiRAGAS provides validated causal inference on NVIDIA GPU infrastructure (BioNeMo, Clara)</td></tr>
+<tr><td class="hl">Apple</td><td>$3.3T</td><td>BiRAGAS-derived biomarker signatures for precision health applications via HealthKit</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sub-header">2. AI Drug Discovery Pure-Plays</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Company</th><th>Valuation</th><th>BiRAGAS Differentiation</th></tr></thead>
+<tbody>
+<tr><td class="hl">Recursion</td><td>$3.5B (RXRX)</td><td>Morphological phenotypic imaging &mdash; correlational. BiRAGAS operates at molecular causality level</td></tr>
+<tr><td class="hl">Insilico Medicine</td><td>~$1.5B</td><td>Generates drug molecules; BiRAGAS identifies validated causal targets. Highly complementary</td></tr>
+<tr><td class="hl">Schr&ouml;dinger</td><td>$2.1B (SDGR)</td><td>Models molecular physics; BiRAGAS models upstream causality. Sequential layers</td></tr>
+<tr><td class="hl">BenevolentAI</td><td>Public (BAI)</td><td>Correlation-based knowledge graphs. BiRAGAS explains WHY, not just THAT</td></tr>
+<tr><td class="hl">Exscientia</td><td>~$800M</td><td>AI-optimized drug candidates; BiRAGAS provides causal target dossiers</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sub-header">3. Genomics &amp; Clinical AI Companies</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Company</th><th>Value</th><th>Relationship</th></tr></thead>
+<tbody>
+<tr><td class="hl">Tempus AI</td><td>$8.1B</td><td>Correlational analytics. BiRAGAS is the causal intelligence layer that transforms Tempus data</td></tr>
+<tr><td class="hl">Illumina</td><td>~$16B</td><td>Sequencing instruments generate FASTQ files BiRAGAS ingests. BaseSpace integration</td></tr>
+<tr><td class="hl">Guardant Health</td><td>~$3.5B</td><td>Liquid biopsy data + BiRAGAS causal inference = FDA-qualifiable mechanistic CDx</td></tr>
+<tr><td class="hl">Foundation Medicine</td><td>Roche (~$2.4B acq.)</td><td>Potentially the most impactful single licensing deal in near-term pipeline</td></tr>
+<tr><td class="hl">IQVIA</td><td>~$38B</td><td>1.3B patient records. BiRAGAS applied at scale = unprecedented causal biomarker discoveries</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sub-header">4. Large Pharma with AI Programs</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Company</th><th>AI Investment</th><th>Partnership Value</th></tr></thead>
+<tbody>
+<tr><td class="hl">Roche / Genentech</td><td>&gt;$2B</td><td>BiRAGAS causal inference on precision oncology cohorts; world&rsquo;s leading CDx co-developer</td></tr>
+<tr><td class="hl">AstraZeneca</td><td>$1.37B BenevolentAI deal</td><td>BiRAGAS is architecturally superior to BenevolentAI&rsquo;s correlation approach</td></tr>
+<tr><td class="hl">Pfizer</td><td>&gt;$1B AI</td><td>Rare disease and immunology alignment; FSGS/IgAN causal biomarkers</td></tr>
+<tr><td class="hl">Eli Lilly</td><td>Schr&ouml;dinger partnership</td><td>Cardiorenal extension post-Mounjaro CKD data</td></tr>
+<tr><td class="hl">Novartis (NIBR)</td><td>~$900M</td><td>Specifically seeks external causal inference capabilities</td></tr>
+<tr><td class="hl">Boehringer Ingelheim</td><td>$24B revenue</td><td>Jardiance CKD success &mdash; ideal precision nephrology co-dev partner</td></tr>
+<tr><td class="hl">Novo Nordisk</td><td>~$900M AI</td><td>Post-FLOW trial CKD expansion; GLP-1 responder biomarkers</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="sub-header">Seven Revenue Channels Across the AI Market</div>
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Channel</th><th>Target</th><th>Revenue Mechanism</th></tr></thead>
+<tbody>
+<tr><td class="hl">Direct Pharma Co-Dev</td><td>Roche, AZ, Pfizer, Lilly, BI, Novo, Sanofi, Merck</td><td>Milestones ($5&ndash;50M/deal) + royalties</td></tr>
+<tr><td class="hl">CDx Licensing</td><td>Veracyte, Guardant, Foundation Medicine, Exact Sciences</td><td>$10&ndash;50M upfront + per-test royalties</td></tr>
+<tr><td class="hl">Cloud API Licensing</td><td>Microsoft, Google, NVIDIA, Palantir, Amazon</td><td>API licensing fees or revenue-share</td></tr>
+<tr><td class="hl">Genomics Integration</td><td>Illumina, 10X, Pacific Biosciences</td><td>Downstream analytics for instrument customers</td></tr>
+<tr><td class="hl">Data Partnerships</td><td>IQVIA, Komodo, Tempus, Flatiron</td><td>Co-exclusive data access + analytics</td></tr>
+<tr><td class="hl">PaaS (SaaS)</td><td>Academic, mid-tier biotech, CROs</td><td>Annual subscription licenses</td></tr>
+<tr><td class="hl">CLIA Lab Services</td><td>Health systems, reference labs</td><td>Fee-for-service; near-term cash generation</td></tr>
+</tbody>
+</table>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q6 -->
+<div id="q6" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 2: Market Opportunity &amp; Competitive Landscape</div>
+  <div class="qa-number">Q6</div>
+  <div class="qa-question">Who are BiRAGAS&rsquo;s direct competitors, and why can&rsquo;t they replicate this platform?</div>
+</div>
+<div class="qa-intro">No current market participant has assembled the full BiRAGAS capability stack. The competitive analysis distinguishes between direct competitors (causal AI in biology) and adjacent players (genomics tools and CROs).</div>
+<div class="qa-body">
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Capability</th><th>Standard CROs</th><th>10X Genomics</th><th>Tempus AI</th><th style="color:var(--accent2)">BiRAGAS</th></tr></thead>
+<tbody>
+<tr><td class="hl">High-Throughput Processing</td><td class="chk">&#10003;</td><td class="chk">&#10003;</td><td class="chk">&#10003;</td><td class="chk">&#10003;</td></tr>
+<tr><td class="hl">Spatial Transcriptomics</td><td class="no">&#10007;</td><td class="chk">&#10003;</td><td class="no">&#10007;</td><td>Roadmap</td></tr>
+<tr><td class="hl">Causal Inference Engine (DAG)</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="chk">&#10003;</td></tr>
+<tr><td class="hl">AI Hallucination Mitigation</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="chk">&#10003;</td></tr>
+<tr><td class="hl">FDA-Ready CDx Automation</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td style="color:var(--amber)">Limited</td><td class="chk">&#10003;</td></tr>
+<tr><td class="hl">Molecule-to-Molecule Causal Graphs</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="chk">&#10003;</td></tr>
+<tr><td class="hl">CLIA-Certified Lab</td><td style="color:var(--amber)">Varies</td><td class="no">&#10007;</td><td class="chk">&#10003;</td><td class="chk">&#10003;</td></tr>
+<tr><td class="hl">Multi-Agent Architecture</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="chk">&#10003;</td></tr>
+<tr><td class="hl">Disease-Label-Independent</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="no">&#10007;</td><td class="chk">&#10003;</td></tr>
+</tbody>
+</table>
+</div>
+<div class="part-header">Why Replication Is Non-Trivial</div>
+<ul>
+<li><strong>15 Years of Domain Knowledge:</strong> Dual physician-scientist expertise accumulated over 15 years &mdash; not a software problem solvable by hiring ML engineers.</li>
+<li><strong>Proprietary 8.6M Vector Database:</strong> Years of expert curation, validation, and annotation. Cannot be instantly replicated.</li>
+<li><strong>CLIA-Certified Lab:</strong> Physical operational asset that took years to establish and certify.</li>
+<li><strong>Regulatory Alignment Architecture:</strong> Designed from inception for FDA compliance. Retrofitting is architecturally difficult.</li>
+<li><strong>Capital Efficiency:</strong> $23M and 15 years to reach v1.0. Comparable investment required by any competitor.</li>
+</ul>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q7 -->
+<div id="q7" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 2: Market Opportunity &amp; Competitive Landscape</div>
+  <div class="qa-number">Q7</div>
+  <div class="qa-question">What specific Blue Ocean opportunities in precision nephrology does BiRAGAS uniquely address?</div>
+</div>
+<div class="qa-intro">Precision nephrology is BiRAGAS&rsquo;s primary commercial beachhead &mdash; deliberately chosen where unmet need is severe, competitors are absent, and causal inference provides a decisive advantage.</div>
+<div class="qa-body">
+<ul>
+<li><strong>Rapid Progressors (20&ndash;30% of CKD patients):</strong> 10x faster renal decline, cannot be identified prospectively with current tools. BiRAGAS constructs causal molecular signatures for risk stratification. CDx market value: <strong style="color:var(--emerald)">$400&ndash;800M</strong>.</li>
+<li><strong>Podocyte Protection via TRPC6-Targeted Pathways:</strong> Genetically validated FSGS cause. BiRAGAS maps the complete causal graph downstream of TRPC6 dysfunction, identifying novel therapeutic nodes. Supports partnership discussions with Boehringer Ingelheim, Sanofi, and Novo Nordisk.</li>
+<li><strong>Residual Proteinuria:</strong> Millions affected, no FDA-approved CDx. Mechanistic diversity (immune, podocyte, tubular, mesangial) requires causal subtyping. The first company to develop validated CDx panels owns this market for a decade.</li>
+</ul>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- SECTION 3 -->
+<!-- Q8 -->
+<div id="q8" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 3: Regulatory Strategy &amp; FDA Alignment</div>
+  <div class="qa-number">Q8</div>
+  <div class="qa-question">How does BiRAGAS align with FDA&rsquo;s requirements, and what is the regulatory pathway?</div>
+</div>
+<div class="qa-intro">FDA regulatory alignment is not a feature added post-hoc &mdash; it is the architectural foundation from which the entire system was designed.</div>
+<div class="qa-body">
+<p>Since 2019, FDA has increasingly required <strong>mechanistic &mdash; not merely associative &mdash; evidence</strong> for biomarker qualification. This has created a critical gap: the vast majority of tools produce associative, not mechanistic, evidence.</p>
+<ul>
+<li><strong>Biomarker Qualification Program (BQP):</strong> BiRAGAS outputs map directly onto FDA BQP submission requirements. The Explain Module produces submission-ready content.</li>
+<li><strong>CDx Co-Development (21 CFR 809.40):</strong> Comparative and Counterfactual modules generate patient stratification evidence for CDx co-approval.</li>
+<li><strong>Breakthrough Device Designation:</strong> CDx for serious conditions with no alternatives may qualify, accelerating review by 30&ndash;40%.</li>
+<li><strong>510(k) vs. PMA Strategy:</strong> Pre-submission meetings with FDA to establish optimal pathway.</li>
+</ul>
+<div class="callout emerald">
+<div class="callout-title">Regulatory Tailwind as Commercial Moat</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">Every new FDA guidance raising the mechanistic proof bar <strong style="color:var(--text)">increases BiRAGAS&rsquo;s value</strong> and makes it harder for correlation-based competitors to comply. This is an externally driven tailwind largely independent of company execution.</p>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q9 -->
+<div id="q9" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 3: Regulatory Strategy &amp; FDA Alignment</div>
+  <div class="qa-number">Q9</div>
+  <div class="qa-question">What is the IP strategy protecting BiRAGAS&rsquo;s technology?</div>
+</div>
+<div class="qa-intro">A multi-layered defensive moat operating simultaneously at algorithm, system architecture, biological knowledge, and data levels.</div>
+<div class="qa-body">
+<ul>
+<li><strong>Algorithmic Patents:</strong> Core causal inference methodology &mdash; Bayesian DAG + PSI scoring + confidence-gated output &mdash; constitutes patentable inventive step. Utility patents being filed.</li>
+<li><strong>Proprietary Biological Vector Database:</strong> 8.6M vectors represent both trade secret (curation methodology) and data moat. Cannot be purchased.</li>
+<li><strong>Biomarker Discovery IP:</strong> Each validated panel generates independent IP &mdash; licensable royalty streams or CDx co-development milestones.</li>
+<li><strong>CLIA Lab Operational Know-How:</strong> Clinical workflows, QMS, and processing protocols as proprietary operational IP.</li>
+<li><strong>Trade Secret Protection:</strong> Multi-agent orchestration, confidence calibration, and training data curation maintained via NDAs and employment agreements.</li>
+</ul>
+<p>Even if a competitor designs around a single patent, the biological database, lab infrastructure, and accumulated biomarker IP provide durable advantage.</p>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- SECTION 4 -->
+<!-- Q10 -->
+<div id="q10" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 4: Business Model &amp; Financial Projections</div>
+  <div class="qa-number">Q10</div>
+  <div class="qa-question">What are the revenue streams, and what does the financial model look like?</div>
+</div>
+<div class="qa-intro">Diversified, multi-stream revenue balancing near-term clinical services with high-margin technology licensing. Near-term CLIA revenue validates clinical utility while larger revenues compound.</div>
+<div class="qa-body">
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Revenue Stream</th><th>Timeline</th><th>Margin</th><th>Scale Potential</th></tr></thead>
+<tbody>
+<tr><td class="hl">CLIA Lab Clinical Services</td><td>Immediate</td><td>40&ndash;55%</td><td>$2&ndash;5M ARR at scale</td></tr>
+<tr><td class="hl">Drug Discovery Partnerships</td><td>12&ndash;24 months</td><td>70&ndash;85%</td><td>$10&ndash;50M+ per partnership</td></tr>
+<tr><td class="hl">Biomarker Licensing (CDx)</td><td>18&ndash;36 months</td><td>80&ndash;90%</td><td>$50&ndash;200M+ per validated panel</td></tr>
+<tr><td class="hl">Platform-as-a-Service</td><td>24&ndash;36 months</td><td>75&ndash;85%</td><td>$1&ndash;5M ARR per enterprise client</td></tr>
+<tr><td class="hl">FDA Dossier Automation</td><td>36&ndash;48 months</td><td>85%+</td><td>High-value regulatory automation</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="part-header">Use of Series A Proceeds ($40&ndash;55M Pre-Money Valuation)</div>
+<ul>
+<li><strong>Platform Infrastructure Scale (35%):</strong> FASTQ integration, single-cell resolution, cloud infrastructure for concurrent pharma partnerships.</li>
+<li><strong>Business Development &amp; Partnerships (25%):</strong> Dedicated BD team for pharma co-development and CDx licensing deals.</li>
+<li><strong>Clinical Validation Studies (20%):</strong> Prospective studies to validate biomarker panels &mdash; required for FDA and CDx agreements.</li>
+<li><strong>Regulatory Affairs (10%):</strong> Pre-submission FDA meetings, BQP submissions, CDx filings.</li>
+<li><strong>Operations &amp; Working Capital (10%):</strong> CLIA expansion, personnel, operating runway through revenue inflection.</li>
+</ul>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q11 -->
+<div id="q11" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 4: Business Model &amp; Financial Projections</div>
+  <div class="qa-number">Q11</div>
+  <div class="qa-question">What partnerships are in place, and how do they de-risk the investment?</div>
+</div>
+<div class="qa-intro">Strategic partnerships provide scientific validation and commercial de-risking &mdash; demonstrating real-world demand from organizations with budget authority.</div>
+<div class="qa-body">
+<ul>
+<li><strong>Academic Partnerships (UCI and USC):</strong> Active collaborations providing peer-reviewed validation. Publications create independent third-party credibility critical for pharma due diligence. Access to patient cohort data expands training/validation datasets.</li>
+<li><strong>Pharmaceutical Partnership (Active):</strong> Active strategic partnership validating BiRAGAS&rsquo;s pharma-grade utility. Passed internal scientific review by a sophisticated partner &mdash; the most demanding validation standard in the industry.</li>
+<li><strong>CLIA-Certified Laboratory:</strong> Generates current revenue, validates clinical protocols, provides closed-loop validation where computational discoveries are tested in real patient samples. Most AI companies are computation-only and must rely on CRO partners.</li>
+</ul>
+<div class="callout emerald">
+<div class="callout-title">De-Risking Significance</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">BiRAGAS has already passed the critical &ldquo;does this produce credible, usable results?&rdquo; validation gate. The platform is <strong style="color:var(--text)">operationally validated by organizations whose scientific reputations depend on the quality of the tools they use</strong>.</p>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- SECTION 5 -->
+<!-- Q12 -->
+<div id="q12" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 5: Team, Validation &amp; Risk Management</div>
+  <div class="qa-number">Q12</div>
+  <div class="qa-question">What is the founder&rsquo;s background, and why is this team uniquely qualified?</div>
+</div>
+<div class="qa-intro">Dr. Mohamad Ammar Ayass, MD, FCCP, represents an exceptionally rare professional archetype: a practicing physician-scientist with board certification in pulmonary-critical care medicine and nephrology, combined with deep expertise in computational biology, multi-omics analysis, and AI platform development.</div>
+<div class="qa-body">
+<p>Most AI drug discovery companies are founded by computational scientists lacking clinical intuition, or clinician-founders who cannot build computational infrastructure. Dr. Ayass&rsquo;s combination directly explains why BiRAGAS has architectural characteristics (hallucination mitigation, disease-label independence, FDA-alignment) that pure-play computational companies have not developed.</p>
+<ul>
+<li><strong>Clinical Expertise:</strong> Active pulmonary-critical care and nephrology practice providing direct patient context that informs which molecular questions matter clinically.</li>
+<li><strong>Research Track Record:</strong> 15 years of sustained R&amp;D investment ($23M self-funded) &mdash; extraordinary conviction and financial dedication.</li>
+<li><strong>Operational Infrastructure:</strong> Founding and operating a CLIA-certified laboratory demonstrates organizational capability beyond purely scientific expertise.</li>
+<li><strong>Regulatory Understanding:</strong> Clinical practice in regulated environments translates directly to understanding what FDA reviewers need.</li>
+</ul>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q13 -->
+<div id="q13" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 5: Team, Validation &amp; Risk Management</div>
+  <div class="qa-number">Q13</div>
+  <div class="qa-question">What are the key risks, and how does the company mitigate them?</div>
+</div>
+<div class="qa-intro">Transparent risk disclosure with specific mitigation strategies for each identified risk category.</div>
+<div class="qa-body">
+<div class="qa-table-wrap">
+<table class="qa-table">
+<thead><tr><th>Risk</th><th>Description</th><th>Mitigation</th></tr></thead>
+<tbody>
+<tr><td class="hl">Clinical Validation</td><td>Biomarker panels may not achieve significance in prospective cohorts</td><td>Conservative &ge;0.65 threshold; multi-validation stream; initial focus on strongest prior evidence (TRPC6, podocyte biology)</td></tr>
+<tr><td class="hl">Regulatory</td><td>FDA requirements could shift or become more demanding</td><td>Proactive pre-submission meetings; BiRAGAS aligned with direction of travel (more mechanistic rigor favors us)</td></tr>
+<tr><td class="hl">Competitive</td><td>Well-capitalized competitor (Google DeepMind, Recursion) could attempt replication</td><td>15-year head start; proprietary 8.6M database; CLIA lab; active pharma partnerships; patent portfolio</td></tr>
+<tr><td class="hl">Commercial Adoption</td><td>Pharma partners may be slow to adopt novel category</td><td>CLIA generates near-term revenue; academic publications build credibility; active pharma partnership; integration with existing workflows</td></tr>
+<tr><td class="hl">Key Person</td><td>Domain expertise concentrated in founder</td><td>Structured knowledge transfer; platform documentation; senior scientific hires funded by Series A; academic partnerships embed institutional knowledge</td></tr>
+<tr><td class="hl">Data Privacy / HIPAA</td><td>Multi-omics patient data requires robust protection</td><td>HIPAA-compliant infrastructure; OTP-verified access; de-identified at ingestion; CLIA compliance framework extends to data handling</td></tr>
+</tbody>
+</table>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- SECTION 6 -->
+<!-- Q14 -->
+<div id="q14" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 6: Investment Thesis &amp; The Case for BiRAGAS</div>
+  <div class="qa-number">Q14</div>
+  <div class="qa-question">Why is now the right time to invest in BiRAGAS?</div>
+</div>
+<div class="qa-intro">Several converging forces make the 2025 window uniquely favorable for a Series A investment &mdash; and uniquely costly to miss.</div>
+<div class="qa-body">
+<ul>
+<li><strong>Platform Is Live:</strong> BiRAGAS v1.0 is operational with a real patient data pipeline. Not pre-revenue, pre-product &mdash; a <strong>scaling investment</strong> in an operational platform.</li>
+<li><strong>FDA Tailwind Is Accelerating:</strong> Each new guidance document raising the evidentiary bar simultaneously raises BiRAGAS&rsquo;s value. Externally driven, largely independent of execution.</li>
+<li><strong>Market at Inflection:</strong> AI drug discovery growing from $1.4B to $9.7B by 2030 (6.9x). BiRAGAS positioned at the highest-value segment.</li>
+<li><strong>No Competitor in the Full Stack:</strong> The window is finite. Series A capital enables locking in partnerships, filing patents, and establishing clinical validation.</li>
+<li><strong>Validation Already in Place:</strong> UCI, USC, and active pharma partnerships mean the platform has passed the most demanding independent scientific scrutiny.</li>
+</ul>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q15 -->
+<div id="q15" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 6: Investment Thesis &amp; The Case for BiRAGAS</div>
+  <div class="qa-number">Q15</div>
+  <div class="qa-question">What does success look like at 3 years and 5 years post-investment?</div>
+</div>
+<div class="qa-body">
+<div class="part-header">Year 1&ndash;2: Platform Scale &amp; Partnership Acceleration</div>
+<ul>
+<li>FASTQ integration and single-cell resolution deployed &mdash; expanding addressable disease categories.</li>
+<li>2&ndash;3 signed pharma co-development agreements with milestone payments of $5&ndash;15M each.</li>
+<li>First validated biomarker panel submitted to FDA under BQP.</li>
+<li>CLIA lab revenue growing to $2&ndash;3M annually.</li>
+<li>Peer-reviewed publications from UCI/USC collaborations establishing scientific credibility.</li>
+</ul>
+<div class="part-header">Year 3&ndash;5: Revenue Inflection &amp; Market Leadership</div>
+<ul>
+<li>First FDA-qualified biomarker panel approved &mdash; CDx licensing revenue of $10&ndash;30M/year.</li>
+<li>5&ndash;10 pharma partnerships generating $50&ndash;150M aggregate milestone and royalty revenues.</li>
+<li>Platform-as-a-Service launched, generating $5&ndash;20M ARR.</li>
+<li>Automated FDA dossier generation deployed as distinct revenue stream.</li>
+<li>Series B or strategic acquisition discussions at substantially higher valuation.</li>
+</ul>
+<div class="callout emerald">
+<div class="callout-title">Investor Return Framework</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">At a <strong style="color:var(--text)">$40&ndash;55M Series A pre-money valuation</strong>, with a clear path to $50&ndash;150M in partnership revenues by Year 5 and a CDx licensing portfolio supporting a <strong style="color:var(--accent2)">$500M&ndash;$2B acquisition or IPO valuation</strong>, the risk-adjusted return for early Series A investors is exceptionally compelling.</p>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- Q16 -->
+<div id="q16" class="qa-section fade-in">
+<div class="qa-header">
+  <div class="qa-section-label">Section 6: Investment Thesis &amp; The Case for BiRAGAS</div>
+  <div class="qa-number">Q16</div>
+  <div class="qa-question">What is the exit strategy, and what are comparable transaction values?</div>
+</div>
+<div class="qa-body">
+<ul>
+<li><strong>Strategic Pharma Acquisition:</strong> AstraZeneca/Alexion ($39B), Roche/Flatiron ($1.9B). Valuation based on validated biomarker pipeline + platform technology.</li>
+<li><strong>AI Technology Company Acquisition (High-Probability Premium Exit):</strong>
+  <ul>
+    <li><strong>NVIDIA:</strong> BiRAGAS as the missing biological causality engine for BioNeMo. NVIDIA&rsquo;s $1B+ Recursion investment demonstrates appetite. Category-defining &ldquo;GPU-accelerated causal drug discovery&rdquo; platform.</li>
+    <li><strong>Google / Alphabet (DeepMind):</strong> AlphaFold solves structure; BiRAGAS solves causality. Completes the drug discovery stack. Bio-RAG hallucination mitigation directly relevant to Med-PaLM 2 and Gemini Health.</li>
+    <li><strong>Samsung:</strong> Dual pathway via Samsung Electronics AI and Samsung BioLogics manufacturing. Fully integrated AI-to-biologics platform.</li>
+    <li><strong>Microsoft / Azure:</strong> &ldquo;Azure-powered causal drug discovery&rdquo; platform. $19.7B Nuance acquisition demonstrates willingness for transformative acquisitions.</li>
+    <li><strong>Amazon / AWS:</strong> BiRAGAS as managed service on Bedrock. $4B+ Anthropic investment and $3.9B One Medical acquisition demonstrate approach.</li>
+  </ul>
+</li>
+<li><strong>Diagnostics M&amp;A:</strong> Foundation Medicine (Roche, $2.4B), Guardant, Exact Sciences. CDx pipeline + discovery engine command premium multiples.</li>
+<li><strong>Strategic Licensing (No Full Exit):</strong> Large pharma licensing deals for disease-specific IP rights. Vertex/CRISPR CF program: $245M upfront + royalties.</li>
+<li><strong>IPO:</strong> At $30&ndash;50M ARR with 2&ndash;3 FDA submissions, supports $1&ndash;3B public market valuation. Comparable: Recursion ($6B peak), Tempus ($8.1B).</li>
+</ul>
+<div class="callout accent">
+<div class="callout-title">AI Technology Acquisition Valuation Framework</div>
+<p style="font-size:.9rem;color:var(--text2);margin:0">AI tech acquisitions command substantially higher multiples than traditional pharma acquisitions. BiRAGAS would likely command <strong style="color:var(--accent2)">$1.5&ndash;5B at 5&ndash;7 years post-Series A</strong> = <strong style="color:var(--emerald)">30&ndash;100x return</strong> on the $40&ndash;55M pre-money valuation. This reflects the fact that AI companies value foundational platform architectures at multiples of current revenue &mdash; paying for the category-defining infrastructure position.</p>
+</div>
+</div></div>
+<div class="section-divider"></div>
+
+<!-- EXECUTIVE INVESTMENT SUMMARY -->
+<div id="exec" class="exec-summary fade-in">
+<h2 style="font-size:1.8rem;font-weight:700;margin-bottom:1.5rem">Executive Investment Summary</h2>
+<p style="font-size:1.15rem;font-weight:600;margin-bottom:.5rem">Why BiRAGAS Is the Best Choice for Drug Discovery Investment</p>
+<div class="exec-card">
+  <div class="exec-checks">
+    <div class="exec-check"><span class="mark">&#10003;</span><span><strong>ONLY</strong> platform combining causal inference + hallucination mitigation + FDA-ready CDx output</span></div>
+    <div class="exec-check"><span class="mark">&#10003;</span><span><strong>15 years</strong> of R&amp;D and <strong>$23M</strong> invested &mdash; operational platform, not a prototype</span></div>
+    <div class="exec-check"><span class="mark">&#10003;</span><span><strong>FDA regulatory tailwind</strong> that permanently increases competitive advantage</span></div>
+    <div class="exec-check"><span class="mark">&#10003;</span><span><strong>Active pharma and academic partnerships</strong> &mdash; independently validated scientific credibility</span></div>
+    <div class="exec-check"><span class="mark">&#10003;</span><span><strong>CLIA-certified laboratory</strong> generating near-term revenue while platform scales</span></div>
+    <div class="exec-check"><span class="mark">&#10003;</span><span><strong>Blue Ocean</strong> precision nephrology beachhead with no direct competitor</span></div>
+    <div class="exec-check"><span class="mark">&#10003;</span><span><strong>Rare dual expertise</strong> founder: clinical medicine + computational biology + AI</span></div>
+    <div class="exec-check"><span class="mark">&#10003;</span><span><strong>Multiple exit pathways:</strong> pharma acquisition, CDx licensing, AI tech M&amp;A, diagnostics, or IPO</span></div>
+  </div>
+  <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center">
+    <p style="font-size:1.05rem;color:var(--text);font-weight:500;margin-bottom:.5rem">The pharmaceutical industry&rsquo;s 90% clinical trial failure rate is primarily a problem of <strong>causal ignorance</strong>.</p>
+    <p style="font-size:.95rem;color:var(--text2);max-width:700px;margin:0 auto">BiRAGAS solves this at its root. With a $3.4B addressable market in precision nephrology alone, an AI drug discovery market growing to $9.7B by 2030, an active operational platform, validated partnerships, and a <strong style="color:var(--accent2)">$40&ndash;55M Series A pre-money valuation</strong> &mdash; the investment case for BiRAGAS is exceptional.</p>
+  </div>
+</div>
+
+<div style="margin-top:3rem">
+  <p style="font-size:1.1rem;font-weight:700">Ayass BioScience, LLC</p>
+  <p style="color:var(--text2)">Dr. Mohamad Ammar Ayass, MD, FCCP &nbsp;|&nbsp; Founder &amp; CEO</p>
+  <p><a href="mailto:contact@ayassbioscience.com">contact@ayassbioscience.com</a> &nbsp;|&nbsp; <a href="https://www.ayassbioscience.com" target="_blank">www.ayassbioscience.com</a> &nbsp;|&nbsp; Frisco, Texas</p>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="conf"><strong>CONFIDENTIALITY NOTICE</strong><br>This document contains confidential and proprietary information belonging to Ayass Bioscience LLC. It is intended solely for prospective investors as part of the Series A fundraising process. Unauthorized distribution is strictly prohibited.</div>
+<p style="margin-top:1.5rem">&copy; 2025 Ayass BioScience, LLC. All rights reserved.</p>
+</footer>
+
+<!-- BACK TO TOP -->
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</div>
+
+<script>
+// Intersection Observer for fade-in
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Back to top button
+const bt = document.getElementById('backTop');
+window.addEventListener('scroll', () => { bt.classList.toggle('show', window.scrollY > 600) });
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+</script>
+</body>
+</html>
