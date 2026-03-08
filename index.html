@@ -125,11 +125,58 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 .fade-in{opacity:0;transform:translateY(25px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
+/* CHARTS */
+.chart-container{margin:2rem 0;padding:2rem;background:var(--glass);border:1px solid var(--border);border-radius:var(--radius)}
+.chart-title{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;text-align:center}
+.chart-subtitle{font-size:.7rem;color:var(--text3);text-align:center;margin-top:.75rem}
+
+/* Bar Chart */
+.bar-chart{display:flex;align-items:flex-end;gap:clamp(.4rem,1.5vw,1rem);height:220px;padding:0 .5rem;border-bottom:1px solid var(--border)}
+.bar-group{flex:1;display:flex;flex-direction:column;align-items:center;gap:.4rem;min-width:0}
+.bar-pair{display:flex;align-items:flex-end;gap:3px;width:100%;justify-content:center;height:190px}
+.bar{border-radius:4px 4px 0 0;min-width:16px;max-width:32px;flex:1;position:relative;transition:all .6s cubic-bezier(.4,0,.2,1)}
+.bar .bar-val{position:absolute;top:-1.4rem;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:700;white-space:nowrap;color:var(--text)}
+.bar-label{font-size:.55rem;text-align:center;color:var(--text3);text-transform:uppercase;letter-spacing:.02em;line-height:1.2;margin-top:.3rem;max-width:70px;word-wrap:break-word}
+.bar-legend{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem}
+.bar-legend span{display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:var(--text2)}
+.bar-legend .dot-leg{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+
+/* Donut Chart */
+.donut-row{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.donut-wrap{position:relative;width:180px;height:180px;flex-shrink:0}
+.donut-wrap svg{width:100%;height:100%;transform:rotate(-90deg)}
+.donut-wrap .donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut-center .dc-val{font-size:1.5rem;font-weight:800;color:var(--text)}
+.donut-center .dc-label{font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.05em}
+.donut-legend{display:flex;flex-direction:column;gap:.5rem}
+.donut-legend-item{display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:var(--text2)}
+.donut-legend-item .dl-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.donut-legend-item .dl-pct{font-weight:700;color:var(--text);min-width:32px}
+
+/* Horizontal Bar */
+.h-bar-chart{display:flex;flex-direction:column;gap:.75rem}
+.h-bar-row{display:flex;align-items:center;gap:.75rem}
+.h-bar-label{font-size:.8rem;color:var(--text2);min-width:140px;text-align:right;flex-shrink:0}
+.h-bar-track{flex:1;height:28px;background:var(--bg3);border-radius:6px;overflow:hidden;position:relative}
+.h-bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:.6rem;font-size:.7rem;font-weight:700;color:#fff;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.h-bar-value{font-size:.8rem;font-weight:700;color:var(--text);min-width:60px;margin-left:.5rem;flex-shrink:0}
+
+/* Stat Cards */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin:1.5rem 0}
+.stat-card{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;text-align:center}
+.stat-card .sc-val{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;letter-spacing:-.02em}
+.stat-card .sc-label{font-size:.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-top:.25rem}
+
 @media(max-width:600px){
   .toc-grid{grid-template-columns:1fr}
   .nav-right{gap:.75rem}
   .qa-table{font-size:.75rem}
   .qa-table thead th,.qa-table tbody td{padding:.6rem .5rem}
+  .bar-chart{height:160px}
+  .bar-pair{height:140px}
+  .donut-row{flex-direction:column}
+  .h-bar-label{min-width:80px;font-size:.7rem}
+  .bar-label{font-size:.5rem}
 }
 </style>
 </head>
@@ -287,6 +334,31 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 
 <div class="sub-header">LAYER 5: Confidence-Gated Output Architecture (&ge;0.65)</div>
 <p>The composite confidence score integrates five independent evidence streams:</p>
+
+<!-- DONUT: Confidence Score Weights -->
+<div class="chart-container fade-in">
+<div class="chart-title">Composite Confidence Score &mdash; Evidence Weighting</div>
+<div class="donut-row">
+<div class="donut-wrap">
+<svg viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="50" fill="none" stroke="var(--bg3)" stroke-width="14"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#6366f1" stroke-width="14" stroke-dasharray="94.2 220" stroke-dashoffset="0"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#22d3ee" stroke-width="14" stroke-dasharray="78.5 235.5" stroke-dashoffset="-94.2"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#34d399" stroke-width="14" stroke-dasharray="78.5 235.5" stroke-dashoffset="-172.7"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#fbbf24" stroke-width="14" stroke-dasharray="47.1 266.9" stroke-dashoffset="-251.2"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#71717a" stroke-width="14" stroke-dasharray="15.7 298.3" stroke-dashoffset="-298.3"/>
+</svg>
+<div class="donut-center"><div class="dc-val">&ge;0.65</div><div class="dc-label">Threshold</div></div>
+</div>
+<div class="donut-legend">
+<div class="donut-legend-item"><div class="dl-dot" style="background:#6366f1"></div><div class="dl-pct">30%</div>Statistical Causal Evidence (SEM)</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#22d3ee"></div><div class="dl-pct">25%</div>Bio Knowledge Base (RAG)</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#34d399"></div><div class="dl-pct">25%</div>Mendelian Randomization (MR)</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#fbbf24"></div><div class="dl-pct">15%</div>Multi-Agent Cross-Validation</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#71717a"></div><div class="dl-pct">5%</div>Biological Plausibility</div>
+</div>
+</div>
+</div>
 <div class="qa-table-wrap">
 <table class="qa-table">
 <thead><tr><th>Component</th><th>Weight</th><th>What It Measures</th></tr></thead>
@@ -329,6 +401,16 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 </table>
 </div>
 
+<!-- STAT CARDS: Key Numbers -->
+<div class="stat-row fade-in">
+<div class="stat-card"><div class="sc-val" style="color:var(--rose)">$2.6B</div><div class="sc-label">Cost per approved drug</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--rose)">90%</div><div class="sc-label">Clinical trial failure rate</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--amber)">$250-500M</div><div class="sc-label">Saved per Phase II failure avoided</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--emerald)">8.6M</div><div class="sc-label">Biological vectors in RAG</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--accent2)">10</div><div class="sc-label">Specialized AI agents</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--emerald)">&ge;0.65</div><div class="sc-label">Confidence threshold</div></div>
+</div>
+
 <div class="bottom-line">
 <div class="bottom-line-title">The Definitive Investor Bottom Line</div>
 <p style="font-size:.92rem;color:var(--text2);line-height:1.8;margin:0">The pharmaceutical industry loses <strong style="color:var(--text)">$2.3 trillion in failed drug development every decade</strong> &mdash; primarily because it targets molecular passengers instead of molecular drivers. BiRAGAS is the only platform that solves this at the biological root: by replacing statistical correlation with mechanistic causal proof, grounding every inference in 8.6 million biological vectors, cross-validating through 10 specialized agents, and gating outputs at a minimum confidence threshold calibrated to maximize discovery quality. The result is not just better data. It is <strong style="color:var(--accent2)">the right answer</strong> &mdash; the causal molecular truth that transforms a drug development program from a high-probability failure into a high-probability success.</p>
@@ -368,6 +450,31 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="callout cyan">
 <div class="callout-title">Stage 3: Signal-Pathway Integration Scoring</div>
 <p style="font-size:.9rem;color:var(--text2);margin:0">The computational heart of PSI. Composite score from 5 sub-scores: Empirical Signal Coherence (30%), Pathway Knowledge Support (25%), Cross-Omics Concordance (20%), Directionality Coherence (15%), Novel Biology Signal (10%). PSI &ge;0.70 = high confidence; 0.40&ndash;0.70 = moderate; &lt;0.40 = excluded.</p>
+</div>
+
+<!-- DONUT: PSI Sub-Scores -->
+<div class="chart-container fade-in">
+<div class="chart-title">PSI Composite Score &mdash; Sub-Score Weighting</div>
+<div class="donut-row">
+<div class="donut-wrap">
+<svg viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="50" fill="none" stroke="var(--bg3)" stroke-width="14"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#6366f1" stroke-width="14" stroke-dasharray="94.2 220" stroke-dashoffset="0"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#22d3ee" stroke-width="14" stroke-dasharray="78.5 235.5" stroke-dashoffset="-94.2"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#34d399" stroke-width="14" stroke-dasharray="62.8 251.2" stroke-dashoffset="-172.7"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#fbbf24" stroke-width="14" stroke-dasharray="47.1 266.9" stroke-dashoffset="-235.5"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#fb7185" stroke-width="14" stroke-dasharray="31.4 282.6" stroke-dashoffset="-282.6"/>
+</svg>
+<div class="donut-center"><div class="dc-val">&ge;0.70</div><div class="dc-label">High Confidence</div></div>
+</div>
+<div class="donut-legend">
+<div class="donut-legend-item"><div class="dl-dot" style="background:#6366f1"></div><div class="dl-pct">30%</div>Empirical Signal Coherence (ESC)</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#22d3ee"></div><div class="dl-pct">25%</div>Pathway Knowledge Support (PKS)</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#34d399"></div><div class="dl-pct">20%</div>Cross-Omics Concordance (COC)</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#fbbf24"></div><div class="dl-pct">15%</div>Directionality Coherence (DCS)</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#fb7185"></div><div class="dl-pct">10%</div>Novel Biology Signal (NBS)</div>
+</div>
+</div>
 </div>
 <div class="callout cyan">
 <div class="callout-title">Stage 4: Cross-Pathway Interdependency Mapping</div>
@@ -474,6 +581,26 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 </div>
 <p>Total: approximately <strong style="color:var(--rose)">$8&ndash;10 billion</strong> in collectively wasted pharmaceutical investment.</p>
 
+<!-- BAR CHART: Hallucination Cost -->
+<div class="chart-container fade-in">
+<div class="chart-title">Cost of Unmitigated Biological Hallucination (Documented Cases)</div>
+<div class="h-bar-chart">
+<div class="h-bar-row"><div class="h-bar-label">CETP Inhibitors</div><div class="h-bar-track"><div class="h-bar-fill" style="width:100%;background:linear-gradient(90deg,#fb7185,#e11d48)">&gt;$3B</div></div></div>
+<div class="h-bar-row"><div class="h-bar-label">p38 MAPK Inhibitors</div><div class="h-bar-track"><div class="h-bar-fill" style="width:75%;background:linear-gradient(90deg,#fb7185,#e11d48)">~$2.5B</div></div></div>
+<div class="h-bar-row"><div class="h-bar-label">BACE1 Inhibitors</div><div class="h-bar-track"><div class="h-bar-fill" style="width:70%;background:linear-gradient(90deg,#fb7185,#e11d48)">~$2B</div></div></div>
+<div class="h-bar-row"><div class="h-bar-label">Huntingtin mTOR</div><div class="h-bar-track"><div class="h-bar-fill" style="width:25%;background:linear-gradient(90deg,#fbbf24,#f59e0b)">~$500M</div></div></div>
+</div>
+<div class="chart-subtitle">Combined: $8&ndash;10B in wasted investment &mdash; all preventable by BiRAGAS mitigation layers</div>
+</div>
+
+<!-- STAT: Mitigation Performance -->
+<div class="stat-row fade-in">
+<div class="stat-card"><div class="sc-val" style="color:var(--emerald)">60-70%</div><div class="sc-label">False positives removed by Bio-RAG alone</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--emerald)">&gt;85%</div><div class="sc-label">Precision on positive benchmark</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--emerald)">&gt;90%</div><div class="sc-label">Spurious associations excluded</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--accent2)">847</div><div class="sc-label">True causal benchmarks validated</div></div>
+</div>
+
 <div class="part-header">Part VI: The Competitive Moat</div>
 <ul>
 <li><strong>Domain Expertise Required:</strong> Building a biologically valid hallucination mitigation requires deep physician-scientist expertise that software companies cannot independently produce.</li>
@@ -534,6 +661,20 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="sub-header">Module 7: Standard Bio &mdash; Zero-Disruption Migration</div>
 <p>Provides familiar outputs (DEG lists, pathway enrichment, volcano plots) alongside BiRAGAS&rsquo;s causal analysis. The commercial on-ramp that converts the entire installed base of conventional bioinformatics users into platform customers.</p>
 
+<!-- BAR CHART: Revenue Per Module -->
+<div class="chart-container fade-in">
+<div class="chart-title">Revenue Per Engagement by Module (Midpoint Estimates)</div>
+<div class="h-bar-chart">
+<div class="h-bar-row"><div class="h-bar-label">1. Discovery</div><div class="h-bar-track"><div class="h-bar-fill" style="width:70%;background:linear-gradient(90deg,#6366f1,#8b5cf6)">$2&ndash;5M</div></div></div>
+<div class="h-bar-row"><div class="h-bar-label">2. Directed Edge</div><div class="h-bar-track"><div class="h-bar-fill" style="width:14%;background:linear-gradient(90deg,#22d3ee,#06b6d4)">$200&ndash;500K</div></div></div>
+<div class="h-bar-row"><div class="h-bar-label">3. Intervention</div><div class="h-bar-track"><div class="h-bar-fill" style="width:35%;background:linear-gradient(90deg,#34d399,#10b981)">$500K&ndash;$2M</div></div></div>
+<div class="h-bar-row"><div class="h-bar-label">4. Comparative</div><div class="h-bar-track"><div class="h-bar-fill" style="width:42%;background:linear-gradient(90deg,#fbbf24,#f59e0b)">$1&ndash;3M</div></div></div>
+<div class="h-bar-row"><div class="h-bar-label">5. Counterfactual</div><div class="h-bar-track"><div class="h-bar-fill" style="width:42%;background:linear-gradient(90deg,#fb7185,#e11d48)">$1&ndash;3M</div></div></div>
+<div class="h-bar-row"><div class="h-bar-label">6. Explain</div><div class="h-bar-track"><div class="h-bar-fill" style="width:28%;background:linear-gradient(90deg,#a855f7,#7c3aed)">$500K&ndash;$1.5M</div></div></div>
+</div>
+<div class="chart-subtitle">Full lifecycle per pharma partner: $6&ndash;15M per disease program + $5&ndash;50M CDx milestones + royalties</div>
+</div>
+
 <div class="callout emerald">
 <div class="callout-title">The 7-Module Commercial Flywheel</div>
 <p style="font-size:.9rem;color:var(--text2);margin:0">Discovery &rarr; Directed Edge &rarr; Intervention &rarr; Comparative &rarr; Explain &rarr; Counterfactual &rarr; Next Program. Cumulative: <strong style="color:var(--text)">$6&ndash;15M per disease program</strong> + $5&ndash;50M CDx milestones + royalties. Single large pharma partner = <strong style="color:var(--emerald)">$50&ndash;150M total relationship</strong>. Revenue at every milestone, aligned with scientific performance.</p>
@@ -570,6 +711,20 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 </table>
 </div>
 
+<!-- BAR CHART: Tier 1 Markets 2025 vs 2030 -->
+<div class="chart-container fade-in">
+<div class="chart-title">Tier 1: Core Life Science AI Markets &mdash; 2025 vs 2030 ($B)</div>
+<div class="bar-chart">
+<div class="bar-group"><div class="bar-pair"><div class="bar" style="height:14%;background:#6366f1"><div class="bar-val">$1.4B</div></div><div class="bar" style="height:97%;background:#818cf8"><div class="bar-val" style="color:var(--accent3)">$9.7B</div></div></div><div class="bar-label">AI Drug Discovery</div></div>
+<div class="bar-group"><div class="bar-pair"><div class="bar" style="height:82%;background:#6366f1"><div class="bar-val">$8.2B</div></div><div class="bar" style="height:100%;background:#818cf8"><div class="bar-val" style="color:var(--accent3)">$16.4B</div></div></div><div class="bar-label">CDx</div></div>
+<div class="bar-group"><div class="bar-pair"><div class="bar" style="height:21%;background:#6366f1"><div class="bar-val">$2.1B</div></div><div class="bar" style="height:64%;background:#818cf8"><div class="bar-val" style="color:var(--accent3)">$6.4B</div></div></div><div class="bar-label">Multi-Omics</div></div>
+<div class="bar-group"><div class="bar-pair"><div class="bar" style="height:34%;background:#6366f1"><div class="bar-val">$3.4B</div></div><div class="bar" style="height:71%;background:#818cf8"><div class="bar-val" style="color:var(--accent3)">$7.1B</div></div></div><div class="bar-label">Nephrology</div></div>
+<div class="bar-group"><div class="bar-pair"><div class="bar" style="height:32%;background:#6366f1"><div class="bar-val">$3.2B</div></div><div class="bar" style="height:89%;background:#818cf8"><div class="bar-val" style="color:var(--accent3)">$8.9B</div></div></div><div class="bar-label">Transcrip&shy;tomics</div></div>
+<div class="bar-group"><div class="bar-pair"><div class="bar" style="height:57%;background:#6366f1"><div class="bar-val">$5.7B</div></div><div class="bar" style="height:100%;background:#818cf8"><div class="bar-val" style="color:var(--accent3)">$12.8B</div></div></div><div class="bar-label">Biomarker Discovery</div></div>
+</div>
+<div class="bar-legend"><span><div class="dot-leg" style="background:#6366f1"></div>2025</span><span><div class="dot-leg" style="background:#818cf8"></div>2030</span></div>
+</div>
+
 <div class="part-header">Tier 2: Broader AI Technology Markets</div>
 <div class="qa-table-wrap">
 <table class="qa-table">
@@ -583,6 +738,25 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <tr><td class="hl">Computational Biology Software</td><td>$4.1B</td><td>$10.7B</td><td>Platform-as-a-Service for biotech/CROs</td></tr>
 </tbody>
 </table>
+</div>
+
+<!-- BAR CHART: Tier 2 Markets -->
+<div class="chart-container fade-in">
+<div class="chart-title">Tier 2: Broader AI Technology Markets &mdash; 2025 vs 2030 ($B)</div>
+<div class="bar-chart" style="height:260px">
+<div class="bar-group"><div class="bar-pair" style="height:230px"><div class="bar" style="height:14%;background:#22d3ee"><div class="bar-val">$14.6B</div></div><div class="bar" style="height:100%;background:#06b6d4"><div class="bar-val" style="color:var(--cyan)">$102.7B</div></div></div><div class="bar-label">AI Healthcare</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:230px"><div class="bar" style="height:2%;background:#22d3ee;min-height:10px"><div class="bar-val">$1.2B</div></div><div class="bar" style="height:10%;background:#06b6d4"><div class="bar-val" style="color:var(--cyan)">$9.8B</div></div></div><div class="bar-label">Hallucin. Mitigation</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:230px"><div class="bar" style="height:2%;background:#22d3ee;min-height:10px"><div class="bar-val">$1.6B</div></div><div class="bar" style="height:11%;background:#06b6d4"><div class="bar-val" style="color:var(--cyan)">$11.4B</div></div></div><div class="bar-label">RAG Tech</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:230px"><div class="bar" style="height:1%;background:#22d3ee;min-height:10px"><div class="bar-val">$0.8B</div></div><div class="bar" style="height:46%;background:#06b6d4"><div class="bar-val" style="color:var(--cyan)">$47.1B</div></div></div><div class="bar-label">Agentic AI</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:230px"><div class="bar" style="height:4%;background:#22d3ee"><div class="bar-val">$3.8B</div></div><div class="bar" style="height:14%;background:#06b6d4"><div class="bar-val" style="color:var(--cyan)">$14.4B</div></div></div><div class="bar-label">Clinical Decision</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:230px"><div class="bar" style="height:4%;background:#22d3ee"><div class="bar-val">$4.1B</div></div><div class="bar" style="height:10%;background:#06b6d4"><div class="bar-val" style="color:var(--cyan)">$10.7B</div></div></div><div class="bar-label">Comp Bio Software</div></div>
+</div>
+<div class="bar-legend"><span><div class="dot-leg" style="background:#22d3ee"></div>2025</span><span><div class="dot-leg" style="background:#06b6d4"></div>2030</span></div>
+</div>
+
+<!-- STAT: Combined TAM -->
+<div class="stat-row fade-in">
+<div class="stat-card" style="grid-column:1/-1;padding:1.5rem"><div class="sc-val" style="font-size:2.5rem;background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent">$183B+</div><div class="sc-label" style="font-size:.8rem;margin-top:.5rem">Combined Total Addressable Market by 2030 (Tier 1 + Tier 2)</div><div style="font-size:.8rem;color:var(--text2);margin-top:.25rem">Even 1% capture = <strong style="color:var(--text)">$1.8B revenue opportunity</strong></div></div>
 </div>
 
 <div class="part-header">AI Technology Companies: Customers, Partners &amp; Potential Acquirers</div>
@@ -708,6 +882,15 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 </div>
 <div class="qa-intro">Precision nephrology is BiRAGAS&rsquo;s primary commercial beachhead &mdash; deliberately chosen where unmet need is severe, competitors are absent, and causal inference provides a decisive advantage.</div>
 <div class="qa-body">
+
+<!-- STAT: Nephrology Market -->
+<div class="stat-row fade-in">
+<div class="stat-card"><div class="sc-val" style="color:var(--cyan)">$3.4B</div><div class="sc-label">2025 Precision Nephrology</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--emerald)">$7.1B</div><div class="sc-label">2030 Projection</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--accent2)">16%</div><div class="sc-label">CAGR</div></div>
+<div class="stat-card"><div class="sc-val" style="color:var(--amber)">$400-800M</div><div class="sc-label">Rapid Progressor CDx Value</div></div>
+</div>
+
 <ul>
 <li><strong>Rapid Progressors (20&ndash;30% of CKD patients):</strong> 10x faster renal decline, cannot be identified prospectively with current tools. BiRAGAS constructs causal molecular signatures for risk stratification. CDx market value: <strong style="color:var(--emerald)">$400&ndash;800M</strong>.</li>
 <li><strong>Podocyte Protection via TRPC6-Targeted Pathways:</strong> Genetically validated FSGS cause. BiRAGAS maps the complete causal graph downstream of TRPC6 dysfunction, identifying novel therapeutic nodes. Supports partnership discussions with Boehringer Ingelheim, Sanofi, and Novo Nordisk.</li>
@@ -781,6 +964,44 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <tr><td class="hl">FDA Dossier Automation</td><td>36&ndash;48 months</td><td>85%+</td><td>High-value regulatory automation</td></tr>
 </tbody>
 </table>
+</div>
+
+<!-- BAR CHART: Revenue Margins -->
+<div class="chart-container fade-in">
+<div class="chart-title">Revenue Stream Margin Profiles</div>
+<div class="h-bar-chart">
+<div class="h-bar-row"><div class="h-bar-label">CLIA Lab Services</div><div class="h-bar-track"><div class="h-bar-fill" style="width:48%;background:linear-gradient(90deg,#34d399,#10b981)">40&ndash;55%</div></div><div class="h-bar-value">$2&ndash;5M ARR</div></div>
+<div class="h-bar-row"><div class="h-bar-label">Drug Discovery</div><div class="h-bar-track"><div class="h-bar-fill" style="width:78%;background:linear-gradient(90deg,#6366f1,#8b5cf6)">70&ndash;85%</div></div><div class="h-bar-value">$10&ndash;50M+</div></div>
+<div class="h-bar-row"><div class="h-bar-label">Biomarker/CDx</div><div class="h-bar-track"><div class="h-bar-fill" style="width:85%;background:linear-gradient(90deg,#fbbf24,#f59e0b)">80&ndash;90%</div></div><div class="h-bar-value">$50&ndash;200M+</div></div>
+<div class="h-bar-row"><div class="h-bar-label">PaaS (SaaS)</div><div class="h-bar-track"><div class="h-bar-fill" style="width:80%;background:linear-gradient(90deg,#22d3ee,#06b6d4)">75&ndash;85%</div></div><div class="h-bar-value">$1&ndash;5M/client</div></div>
+<div class="h-bar-row"><div class="h-bar-label">FDA Dossier Auto</div><div class="h-bar-track"><div class="h-bar-fill" style="width:87%;background:linear-gradient(90deg,#a855f7,#7c3aed)">85%+</div></div><div class="h-bar-value">High-value</div></div>
+</div>
+<div class="chart-subtitle">Margin profiles scale from 40% (near-term lab services) to 85%+ (platform licensing)</div>
+</div>
+
+<!-- DONUT: Series A Allocation -->
+<div class="chart-container fade-in">
+<div class="chart-title">Use of Series A Proceeds &mdash; $40&ndash;55M Pre-Money Valuation</div>
+<div class="donut-row">
+<div class="donut-wrap">
+<svg viewBox="0 0 120 120">
+<circle cx="60" cy="60" r="50" fill="none" stroke="var(--bg3)" stroke-width="14"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#6366f1" stroke-width="14" stroke-dasharray="109.9 204.1" stroke-dashoffset="0"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#22d3ee" stroke-width="14" stroke-dasharray="78.5 235.5" stroke-dashoffset="-109.9"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#34d399" stroke-width="14" stroke-dasharray="62.8 251.2" stroke-dashoffset="-188.4"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#fbbf24" stroke-width="14" stroke-dasharray="31.4 282.6" stroke-dashoffset="-251.2"/>
+<circle cx="60" cy="60" r="50" fill="none" stroke="#71717a" stroke-width="14" stroke-dasharray="31.4 282.6" stroke-dashoffset="-282.6"/>
+</svg>
+<div class="donut-center"><div class="dc-val" style="font-size:1.1rem">$40&ndash;55M</div><div class="dc-label">Pre-Money</div></div>
+</div>
+<div class="donut-legend">
+<div class="donut-legend-item"><div class="dl-dot" style="background:#6366f1"></div><div class="dl-pct">35%</div>Platform Infrastructure Scale</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#22d3ee"></div><div class="dl-pct">25%</div>BD &amp; Partnerships</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#34d399"></div><div class="dl-pct">20%</div>Clinical Validation Studies</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#fbbf24"></div><div class="dl-pct">10%</div>Regulatory Affairs</div>
+<div class="donut-legend-item"><div class="dl-dot" style="background:#71717a"></div><div class="dl-pct">10%</div>Operations &amp; Working Capital</div>
+</div>
+</div>
 </div>
 
 <div class="part-header">Use of Series A Proceeds ($40&ndash;55M Pre-Money Valuation)</div>
@@ -904,6 +1125,19 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <li>Automated FDA dossier generation deployed as distinct revenue stream.</li>
 <li>Series B or strategic acquisition discussions at substantially higher valuation.</li>
 </ul>
+<!-- BAR CHART: Revenue Milestones -->
+<div class="chart-container fade-in">
+<div class="chart-title">Revenue Milestone Projections &mdash; Year 1&ndash;5</div>
+<div class="bar-chart" style="height:240px">
+<div class="bar-group"><div class="bar-pair" style="height:210px"><div class="bar" style="height:6%;background:linear-gradient(180deg,#34d399,#10b981);min-height:15px"><div class="bar-val">$2&ndash;3M</div></div></div><div class="bar-label">Yr 1&ndash;2 CLIA Lab</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:210px"><div class="bar" style="height:20%;background:linear-gradient(180deg,#6366f1,#4f46e5)"><div class="bar-val">$5&ndash;15M</div></div></div><div class="bar-label">Yr 1&ndash;2 Pharma Deals</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:210px"><div class="bar" style="height:35%;background:linear-gradient(180deg,#fbbf24,#f59e0b)"><div class="bar-val">$10&ndash;30M</div></div></div><div class="bar-label">Yr 3&ndash;5 CDx Licensing</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:210px"><div class="bar" style="height:100%;background:linear-gradient(180deg,#818cf8,#6366f1)"><div class="bar-val">$50&ndash;150M</div></div></div><div class="bar-label">Yr 3&ndash;5 Pharma Aggregate</div></div>
+<div class="bar-group"><div class="bar-pair" style="height:210px"><div class="bar" style="height:28%;background:linear-gradient(180deg,#22d3ee,#06b6d4)"><div class="bar-val">$5&ndash;20M</div></div></div><div class="bar-label">Yr 3&ndash;5 PaaS ARR</div></div>
+</div>
+<div class="bar-legend"><span><div class="dot-leg" style="background:#34d399"></div>Near-Term</span><span><div class="dot-leg" style="background:#6366f1"></div>Partnerships</span><span><div class="dot-leg" style="background:#fbbf24"></div>CDx Licensing</span><span><div class="dot-leg" style="background:#22d3ee"></div>SaaS</span></div>
+</div>
+
 <div class="callout emerald">
 <div class="callout-title">Investor Return Framework</div>
 <p style="font-size:.9rem;color:var(--text2);margin:0">At a <strong style="color:var(--text)">$40&ndash;55M Series A pre-money valuation</strong>, with a clear path to $50&ndash;150M in partnership revenues by Year 5 and a CDx licensing portfolio supporting a <strong style="color:var(--accent2)">$500M&ndash;$2B acquisition or IPO valuation</strong>, the risk-adjusted return for early Series A investors is exceptionally compelling.</p>
