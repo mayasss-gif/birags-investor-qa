@@ -125,6 +125,21 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 .fade-in{opacity:0;transform:translateY(25px);transition:opacity .6s,transform .6s}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
+/* SLIDE GALLERY */
+.slide-gallery{margin:2.5rem 0;padding:0;border-radius:var(--radius);overflow:hidden}
+.slide-gallery-title{font-size:.85rem;font-weight:700;color:var(--accent2);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.slide-gallery-title::before{content:'';display:inline-block;width:3px;height:1em;background:var(--grad1);border-radius:2px}
+.slide-carousel{position:relative;width:100%;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);background:#000}
+.slide-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);width:100%}
+.slide-track img{width:100%;flex-shrink:0;display:block;object-fit:contain;max-height:600px;background:#0a0a0c}
+.slide-nav{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-top:.75rem}
+.slide-btn{width:38px;height:38px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s}
+.slide-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.slide-counter{font-size:.75rem;color:var(--text3);min-width:60px;text-align:center}
+.slide-dots{display:flex;gap:4px;justify-content:center;margin-top:.5rem}
+.slide-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);transition:all .2s;cursor:pointer}
+.slide-dot.active{background:var(--accent);width:18px;border-radius:3px}
+
 /* CHARTS */
 .chart-container{margin:2rem 0;padding:2rem;background:var(--glass);border:1px solid var(--border);border-radius:var(--radius)}
 .chart-title{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;text-align:center}
@@ -416,6 +431,34 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <p style="font-size:.92rem;color:var(--text2);line-height:1.8;margin:0">The pharmaceutical industry loses <strong style="color:var(--text)">$2.3 trillion in failed drug development every decade</strong> &mdash; primarily because it targets molecular passengers instead of molecular drivers. BiRAGAS is the only platform that solves this at the biological root: by replacing statistical correlation with mechanistic causal proof, grounding every inference in 8.6 million biological vectors, cross-validating through 10 specialized agents, and gating outputs at a minimum confidence threshold calibrated to maximize discovery quality. The result is not just better data. It is <strong style="color:var(--accent2)">the right answer</strong> &mdash; the causal molecular truth that transforms a drug development program from a high-probability failure into a high-probability success.</p>
 </div>
 
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">BiRAGAS Overview Presentation — 14 Slides</div>
+<div class="slide-carousel" id="gallery0" data-index="0" data-total="14">
+<div class="slide-track"><img src="slides/Q1/slide_1.jpg" alt="BiRAGAS Overview Presentation Slide 1" loading="lazy"><img src="slides/Q1/slide_10.jpg" alt="BiRAGAS Overview Presentation Slide 2" loading="lazy"><img src="slides/Q1/slide_11.jpg" alt="BiRAGAS Overview Presentation Slide 3" loading="lazy"><img src="slides/Q1/slide_12.jpg" alt="BiRAGAS Overview Presentation Slide 4" loading="lazy"><img src="slides/Q1/slide_13.jpg" alt="BiRAGAS Overview Presentation Slide 5" loading="lazy"><img src="slides/Q1/slide_14.jpg" alt="BiRAGAS Overview Presentation Slide 6" loading="lazy"><img src="slides/Q1/slide_2.jpg" alt="BiRAGAS Overview Presentation Slide 7" loading="lazy"><img src="slides/Q1/slide_3.jpg" alt="BiRAGAS Overview Presentation Slide 8" loading="lazy"><img src="slides/Q1/slide_4.jpg" alt="BiRAGAS Overview Presentation Slide 9" loading="lazy"><img src="slides/Q1/slide_5.jpg" alt="BiRAGAS Overview Presentation Slide 10" loading="lazy"><img src="slides/Q1/slide_6.jpg" alt="BiRAGAS Overview Presentation Slide 11" loading="lazy"><img src="slides/Q1/slide_7.jpg" alt="BiRAGAS Overview Presentation Slide 12" loading="lazy"><img src="slides/Q1/slide_8.jpg" alt="BiRAGAS Overview Presentation Slide 13" loading="lazy"><img src="slides/Q1/slide_9.jpg" alt="BiRAGAS Overview Presentation Slide 14" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery0')">&#8249;</button>
+<span class="slide-counter" id="gallery0-counter">1 / 14</span>
+<button class="slide-btn" onclick="nextSlide('gallery0')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery0-dots"><div class="slide-dot active" onclick="goSlide('gallery0',0)"></div><div class="slide-dot" onclick="goSlide('gallery0',1)"></div><div class="slide-dot" onclick="goSlide('gallery0',2)"></div><div class="slide-dot" onclick="goSlide('gallery0',3)"></div><div class="slide-dot" onclick="goSlide('gallery0',4)"></div><div class="slide-dot" onclick="goSlide('gallery0',5)"></div><div class="slide-dot" onclick="goSlide('gallery0',6)"></div><div class="slide-dot" onclick="goSlide('gallery0',7)"></div><div class="slide-dot" onclick="goSlide('gallery0',8)"></div><div class="slide-dot" onclick="goSlide('gallery0',9)"></div><div class="slide-dot" onclick="goSlide('gallery0',10)"></div><div class="slide-dot" onclick="goSlide('gallery0',11)"></div><div class="slide-dot" onclick="goSlide('gallery0',12)"></div><div class="slide-dot" onclick="goSlide('gallery0',13)"></div></div>
+</div>
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">BiRAGAS Overview — Extended — 15 Slides</div>
+<div class="slide-carousel" id="gallery1" data-index="0" data-total="15">
+<div class="slide-track"><img src="slides/Q1(b)/slide_1.jpg" alt="BiRAGAS Overview — Extended Slide 1" loading="lazy"><img src="slides/Q1(b)/slide_10.jpg" alt="BiRAGAS Overview — Extended Slide 2" loading="lazy"><img src="slides/Q1(b)/slide_11.jpg" alt="BiRAGAS Overview — Extended Slide 3" loading="lazy"><img src="slides/Q1(b)/slide_12.jpg" alt="BiRAGAS Overview — Extended Slide 4" loading="lazy"><img src="slides/Q1(b)/slide_13.jpg" alt="BiRAGAS Overview — Extended Slide 5" loading="lazy"><img src="slides/Q1(b)/slide_14.jpg" alt="BiRAGAS Overview — Extended Slide 6" loading="lazy"><img src="slides/Q1(b)/slide_15.jpg" alt="BiRAGAS Overview — Extended Slide 7" loading="lazy"><img src="slides/Q1(b)/slide_2.jpg" alt="BiRAGAS Overview — Extended Slide 8" loading="lazy"><img src="slides/Q1(b)/slide_3.jpg" alt="BiRAGAS Overview — Extended Slide 9" loading="lazy"><img src="slides/Q1(b)/slide_4.jpg" alt="BiRAGAS Overview — Extended Slide 10" loading="lazy"><img src="slides/Q1(b)/slide_5.jpg" alt="BiRAGAS Overview — Extended Slide 11" loading="lazy"><img src="slides/Q1(b)/slide_6.jpg" alt="BiRAGAS Overview — Extended Slide 12" loading="lazy"><img src="slides/Q1(b)/slide_7.jpg" alt="BiRAGAS Overview — Extended Slide 13" loading="lazy"><img src="slides/Q1(b)/slide_8.jpg" alt="BiRAGAS Overview — Extended Slide 14" loading="lazy"><img src="slides/Q1(b)/slide_9.jpg" alt="BiRAGAS Overview — Extended Slide 15" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery1')">&#8249;</button>
+<span class="slide-counter" id="gallery1-counter">1 / 15</span>
+<button class="slide-btn" onclick="nextSlide('gallery1')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery1-dots"><div class="slide-dot active" onclick="goSlide('gallery1',0)"></div><div class="slide-dot" onclick="goSlide('gallery1',1)"></div><div class="slide-dot" onclick="goSlide('gallery1',2)"></div><div class="slide-dot" onclick="goSlide('gallery1',3)"></div><div class="slide-dot" onclick="goSlide('gallery1',4)"></div><div class="slide-dot" onclick="goSlide('gallery1',5)"></div><div class="slide-dot" onclick="goSlide('gallery1',6)"></div><div class="slide-dot" onclick="goSlide('gallery1',7)"></div><div class="slide-dot" onclick="goSlide('gallery1',8)"></div><div class="slide-dot" onclick="goSlide('gallery1',9)"></div><div class="slide-dot" onclick="goSlide('gallery1',10)"></div><div class="slide-dot" onclick="goSlide('gallery1',11)"></div><div class="slide-dot" onclick="goSlide('gallery1',12)"></div><div class="slide-dot" onclick="goSlide('gallery1',13)"></div><div class="slide-dot" onclick="goSlide('gallery1',14)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -512,6 +555,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="bottom-line-title">The PSI Investor Bottom Line</div>
 <p style="font-size:.92rem;color:var(--text2);line-height:1.8;margin:0">PSI is a fundamentally different class of pathway analysis that simultaneously reads patient data from the bottom up and validates from the top down. It delivers dramatically reduced false discovery rate, systematic novel biology identification, precise patient sub-group stratification, and a cross-pathway hierarchy that tells drug developers exactly which pathway to target first. Its 5-stage architecture represents <strong style="color:var(--accent2)">15 years of iterative scientific development that cannot be quickly replicated</strong>.</p>
 </div>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">PSI Framework Presentation — 15 Slides</div>
+<div class="slide-carousel" id="gallery2" data-index="0" data-total="15">
+<div class="slide-track"><img src="slides/Q2/slide_1.jpg" alt="PSI Framework Presentation Slide 1" loading="lazy"><img src="slides/Q2/slide_10.jpg" alt="PSI Framework Presentation Slide 2" loading="lazy"><img src="slides/Q2/slide_11.jpg" alt="PSI Framework Presentation Slide 3" loading="lazy"><img src="slides/Q2/slide_12.jpg" alt="PSI Framework Presentation Slide 4" loading="lazy"><img src="slides/Q2/slide_13.jpg" alt="PSI Framework Presentation Slide 5" loading="lazy"><img src="slides/Q2/slide_14.jpg" alt="PSI Framework Presentation Slide 6" loading="lazy"><img src="slides/Q2/slide_15.jpg" alt="PSI Framework Presentation Slide 7" loading="lazy"><img src="slides/Q2/slide_2.jpg" alt="PSI Framework Presentation Slide 8" loading="lazy"><img src="slides/Q2/slide_3.jpg" alt="PSI Framework Presentation Slide 9" loading="lazy"><img src="slides/Q2/slide_4.jpg" alt="PSI Framework Presentation Slide 10" loading="lazy"><img src="slides/Q2/slide_5.jpg" alt="PSI Framework Presentation Slide 11" loading="lazy"><img src="slides/Q2/slide_6.jpg" alt="PSI Framework Presentation Slide 12" loading="lazy"><img src="slides/Q2/slide_7.jpg" alt="PSI Framework Presentation Slide 13" loading="lazy"><img src="slides/Q2/slide_8.jpg" alt="PSI Framework Presentation Slide 14" loading="lazy"><img src="slides/Q2/slide_9.jpg" alt="PSI Framework Presentation Slide 15" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery2')">&#8249;</button>
+<span class="slide-counter" id="gallery2-counter">1 / 15</span>
+<button class="slide-btn" onclick="nextSlide('gallery2')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery2-dots"><div class="slide-dot active" onclick="goSlide('gallery2',0)"></div><div class="slide-dot" onclick="goSlide('gallery2',1)"></div><div class="slide-dot" onclick="goSlide('gallery2',2)"></div><div class="slide-dot" onclick="goSlide('gallery2',3)"></div><div class="slide-dot" onclick="goSlide('gallery2',4)"></div><div class="slide-dot" onclick="goSlide('gallery2',5)"></div><div class="slide-dot" onclick="goSlide('gallery2',6)"></div><div class="slide-dot" onclick="goSlide('gallery2',7)"></div><div class="slide-dot" onclick="goSlide('gallery2',8)"></div><div class="slide-dot" onclick="goSlide('gallery2',9)"></div><div class="slide-dot" onclick="goSlide('gallery2',10)"></div><div class="slide-dot" onclick="goSlide('gallery2',11)"></div><div class="slide-dot" onclick="goSlide('gallery2',12)"></div><div class="slide-dot" onclick="goSlide('gallery2',13)"></div><div class="slide-dot" onclick="goSlide('gallery2',14)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -612,6 +671,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="bottom-line-title">The Hallucination Mitigation Investor Bottom Line</div>
 <p style="font-size:.92rem;color:var(--text2);line-height:1.8;margin:0">BiRAGAS is the only platform with a dedicated four-layer hallucination mitigation architecture addressing all five categories. Bio-RAG reduces false positives by 60&ndash;70%. Multi-agent cross-validation catches confounding and directional errors. Calibrated confidence gating ensures &gt;85% precision. Four-method directionality validation eliminates the reversal errors that have cost the industry billions. <strong style="color:var(--accent2)">This architecture is not replicable quickly, is not available in any competing product, and is why BiRAGAS outputs are fundamentally more trustworthy.</strong></p>
 </div>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">AI Hallucination Problem & Solution — 13 Slides</div>
+<div class="slide-carousel" id="gallery3" data-index="0" data-total="13">
+<div class="slide-track"><img src="slides/Q3/slide_1.jpg" alt="AI Hallucination Problem & Solution Slide 1" loading="lazy"><img src="slides/Q3/slide_10.jpg" alt="AI Hallucination Problem & Solution Slide 2" loading="lazy"><img src="slides/Q3/slide_11.jpg" alt="AI Hallucination Problem & Solution Slide 3" loading="lazy"><img src="slides/Q3/slide_12.jpg" alt="AI Hallucination Problem & Solution Slide 4" loading="lazy"><img src="slides/Q3/slide_13.jpg" alt="AI Hallucination Problem & Solution Slide 5" loading="lazy"><img src="slides/Q3/slide_2.jpg" alt="AI Hallucination Problem & Solution Slide 6" loading="lazy"><img src="slides/Q3/slide_3.jpg" alt="AI Hallucination Problem & Solution Slide 7" loading="lazy"><img src="slides/Q3/slide_4.jpg" alt="AI Hallucination Problem & Solution Slide 8" loading="lazy"><img src="slides/Q3/slide_5.jpg" alt="AI Hallucination Problem & Solution Slide 9" loading="lazy"><img src="slides/Q3/slide_6.jpg" alt="AI Hallucination Problem & Solution Slide 10" loading="lazy"><img src="slides/Q3/slide_7.jpg" alt="AI Hallucination Problem & Solution Slide 11" loading="lazy"><img src="slides/Q3/slide_8.jpg" alt="AI Hallucination Problem & Solution Slide 12" loading="lazy"><img src="slides/Q3/slide_9.jpg" alt="AI Hallucination Problem & Solution Slide 13" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery3')">&#8249;</button>
+<span class="slide-counter" id="gallery3-counter">1 / 13</span>
+<button class="slide-btn" onclick="nextSlide('gallery3')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery3-dots"><div class="slide-dot active" onclick="goSlide('gallery3',0)"></div><div class="slide-dot" onclick="goSlide('gallery3',1)"></div><div class="slide-dot" onclick="goSlide('gallery3',2)"></div><div class="slide-dot" onclick="goSlide('gallery3',3)"></div><div class="slide-dot" onclick="goSlide('gallery3',4)"></div><div class="slide-dot" onclick="goSlide('gallery3',5)"></div><div class="slide-dot" onclick="goSlide('gallery3',6)"></div><div class="slide-dot" onclick="goSlide('gallery3',7)"></div><div class="slide-dot" onclick="goSlide('gallery3',8)"></div><div class="slide-dot" onclick="goSlide('gallery3',9)"></div><div class="slide-dot" onclick="goSlide('gallery3',10)"></div><div class="slide-dot" onclick="goSlide('gallery3',11)"></div><div class="slide-dot" onclick="goSlide('gallery3',12)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -679,6 +754,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="callout-title">The 7-Module Commercial Flywheel</div>
 <p style="font-size:.9rem;color:var(--text2);margin:0">Discovery &rarr; Directed Edge &rarr; Intervention &rarr; Comparative &rarr; Explain &rarr; Counterfactual &rarr; Next Program. Cumulative: <strong style="color:var(--text)">$6&ndash;15M per disease program</strong> + $5&ndash;50M CDx milestones + royalties. Single large pharma partner = <strong style="color:var(--emerald)">$50&ndash;150M total relationship</strong>. Revenue at every milestone, aligned with scientific performance.</p>
 </div>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">7 Intent Modules Presentation — 13 Slides</div>
+<div class="slide-carousel" id="gallery4" data-index="0" data-total="13">
+<div class="slide-track"><img src="slides/Q4/slide_1.jpg" alt="7 Intent Modules Presentation Slide 1" loading="lazy"><img src="slides/Q4/slide_10.jpg" alt="7 Intent Modules Presentation Slide 2" loading="lazy"><img src="slides/Q4/slide_11.jpg" alt="7 Intent Modules Presentation Slide 3" loading="lazy"><img src="slides/Q4/slide_12.jpg" alt="7 Intent Modules Presentation Slide 4" loading="lazy"><img src="slides/Q4/slide_13.jpg" alt="7 Intent Modules Presentation Slide 5" loading="lazy"><img src="slides/Q4/slide_2.jpg" alt="7 Intent Modules Presentation Slide 6" loading="lazy"><img src="slides/Q4/slide_3.jpg" alt="7 Intent Modules Presentation Slide 7" loading="lazy"><img src="slides/Q4/slide_4.jpg" alt="7 Intent Modules Presentation Slide 8" loading="lazy"><img src="slides/Q4/slide_5.jpg" alt="7 Intent Modules Presentation Slide 9" loading="lazy"><img src="slides/Q4/slide_6.jpg" alt="7 Intent Modules Presentation Slide 10" loading="lazy"><img src="slides/Q4/slide_7.jpg" alt="7 Intent Modules Presentation Slide 11" loading="lazy"><img src="slides/Q4/slide_8.jpg" alt="7 Intent Modules Presentation Slide 12" loading="lazy"><img src="slides/Q4/slide_9.jpg" alt="7 Intent Modules Presentation Slide 13" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery4')">&#8249;</button>
+<span class="slide-counter" id="gallery4-counter">1 / 13</span>
+<button class="slide-btn" onclick="nextSlide('gallery4')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery4-dots"><div class="slide-dot active" onclick="goSlide('gallery4',0)"></div><div class="slide-dot" onclick="goSlide('gallery4',1)"></div><div class="slide-dot" onclick="goSlide('gallery4',2)"></div><div class="slide-dot" onclick="goSlide('gallery4',3)"></div><div class="slide-dot" onclick="goSlide('gallery4',4)"></div><div class="slide-dot" onclick="goSlide('gallery4',5)"></div><div class="slide-dot" onclick="goSlide('gallery4',6)"></div><div class="slide-dot" onclick="goSlide('gallery4',7)"></div><div class="slide-dot" onclick="goSlide('gallery4',8)"></div><div class="slide-dot" onclick="goSlide('gallery4',9)"></div><div class="slide-dot" onclick="goSlide('gallery4',10)"></div><div class="slide-dot" onclick="goSlide('gallery4',11)"></div><div class="slide-dot" onclick="goSlide('gallery4',12)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -834,6 +925,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 </tbody>
 </table>
 </div>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Total Addressable Market Presentation — 12 Slides</div>
+<div class="slide-carousel" id="gallery5" data-index="0" data-total="12">
+<div class="slide-track"><img src="slides/Q5/slide_1.jpg" alt="Total Addressable Market Presentation Slide 1" loading="lazy"><img src="slides/Q5/slide_10.jpg" alt="Total Addressable Market Presentation Slide 2" loading="lazy"><img src="slides/Q5/slide_11.jpg" alt="Total Addressable Market Presentation Slide 3" loading="lazy"><img src="slides/Q5/slide_12.jpg" alt="Total Addressable Market Presentation Slide 4" loading="lazy"><img src="slides/Q5/slide_2.jpg" alt="Total Addressable Market Presentation Slide 5" loading="lazy"><img src="slides/Q5/slide_3.jpg" alt="Total Addressable Market Presentation Slide 6" loading="lazy"><img src="slides/Q5/slide_4.jpg" alt="Total Addressable Market Presentation Slide 7" loading="lazy"><img src="slides/Q5/slide_5.jpg" alt="Total Addressable Market Presentation Slide 8" loading="lazy"><img src="slides/Q5/slide_6.jpg" alt="Total Addressable Market Presentation Slide 9" loading="lazy"><img src="slides/Q5/slide_7.jpg" alt="Total Addressable Market Presentation Slide 10" loading="lazy"><img src="slides/Q5/slide_8.jpg" alt="Total Addressable Market Presentation Slide 11" loading="lazy"><img src="slides/Q5/slide_9.jpg" alt="Total Addressable Market Presentation Slide 12" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery5')">&#8249;</button>
+<span class="slide-counter" id="gallery5-counter">1 / 12</span>
+<button class="slide-btn" onclick="nextSlide('gallery5')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery5-dots"><div class="slide-dot active" onclick="goSlide('gallery5',0)"></div><div class="slide-dot" onclick="goSlide('gallery5',1)"></div><div class="slide-dot" onclick="goSlide('gallery5',2)"></div><div class="slide-dot" onclick="goSlide('gallery5',3)"></div><div class="slide-dot" onclick="goSlide('gallery5',4)"></div><div class="slide-dot" onclick="goSlide('gallery5',5)"></div><div class="slide-dot" onclick="goSlide('gallery5',6)"></div><div class="slide-dot" onclick="goSlide('gallery5',7)"></div><div class="slide-dot" onclick="goSlide('gallery5',8)"></div><div class="slide-dot" onclick="goSlide('gallery5',9)"></div><div class="slide-dot" onclick="goSlide('gallery5',10)"></div><div class="slide-dot" onclick="goSlide('gallery5',11)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -870,6 +977,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <li><strong>Regulatory Alignment Architecture:</strong> Designed from inception for FDA compliance. Retrofitting is architecturally difficult.</li>
 <li><strong>Capital Efficiency:</strong> $23M and 15 years to reach v1.0. Comparable investment required by any competitor.</li>
 </ul>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Competitive Landscape Presentation — 9 Slides</div>
+<div class="slide-carousel" id="gallery6" data-index="0" data-total="9">
+<div class="slide-track"><img src="slides/Q6/slide_1.jpg" alt="Competitive Landscape Presentation Slide 1" loading="lazy"><img src="slides/Q6/slide_2.jpg" alt="Competitive Landscape Presentation Slide 2" loading="lazy"><img src="slides/Q6/slide_3.jpg" alt="Competitive Landscape Presentation Slide 3" loading="lazy"><img src="slides/Q6/slide_4.jpg" alt="Competitive Landscape Presentation Slide 4" loading="lazy"><img src="slides/Q6/slide_5.jpg" alt="Competitive Landscape Presentation Slide 5" loading="lazy"><img src="slides/Q6/slide_6.jpg" alt="Competitive Landscape Presentation Slide 6" loading="lazy"><img src="slides/Q6/slide_7.jpg" alt="Competitive Landscape Presentation Slide 7" loading="lazy"><img src="slides/Q6/slide_8.jpg" alt="Competitive Landscape Presentation Slide 8" loading="lazy"><img src="slides/Q6/slide_9.jpg" alt="Competitive Landscape Presentation Slide 9" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery6')">&#8249;</button>
+<span class="slide-counter" id="gallery6-counter">1 / 9</span>
+<button class="slide-btn" onclick="nextSlide('gallery6')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery6-dots"><div class="slide-dot active" onclick="goSlide('gallery6',0)"></div><div class="slide-dot" onclick="goSlide('gallery6',1)"></div><div class="slide-dot" onclick="goSlide('gallery6',2)"></div><div class="slide-dot" onclick="goSlide('gallery6',3)"></div><div class="slide-dot" onclick="goSlide('gallery6',4)"></div><div class="slide-dot" onclick="goSlide('gallery6',5)"></div><div class="slide-dot" onclick="goSlide('gallery6',6)"></div><div class="slide-dot" onclick="goSlide('gallery6',7)"></div><div class="slide-dot" onclick="goSlide('gallery6',8)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -896,6 +1019,46 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <li><strong>Podocyte Protection via TRPC6-Targeted Pathways:</strong> Genetically validated FSGS cause. BiRAGAS maps the complete causal graph downstream of TRPC6 dysfunction, identifying novel therapeutic nodes. Supports partnership discussions with Boehringer Ingelheim, Sanofi, and Novo Nordisk.</li>
 <li><strong>Residual Proteinuria:</strong> Millions affected, no FDA-approved CDx. Mechanistic diversity (immune, podocyte, tubular, mesangial) requires causal subtyping. The first company to develop validated CDx panels owns this market for a decade.</li>
 </ul>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Precision Nephrology Blue Ocean — 6 Slides</div>
+<div class="slide-carousel" id="gallery7" data-index="0" data-total="6">
+<div class="slide-track"><img src="slides/Q7/slide_1.jpg" alt="Precision Nephrology Blue Ocean Slide 1" loading="lazy"><img src="slides/Q7/slide_2.jpg" alt="Precision Nephrology Blue Ocean Slide 2" loading="lazy"><img src="slides/Q7/slide_3.jpg" alt="Precision Nephrology Blue Ocean Slide 3" loading="lazy"><img src="slides/Q7/slide_4.jpg" alt="Precision Nephrology Blue Ocean Slide 4" loading="lazy"><img src="slides/Q7/slide_5.jpg" alt="Precision Nephrology Blue Ocean Slide 5" loading="lazy"><img src="slides/Q7/slide_6.jpg" alt="Precision Nephrology Blue Ocean Slide 6" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery7')">&#8249;</button>
+<span class="slide-counter" id="gallery7-counter">1 / 6</span>
+<button class="slide-btn" onclick="nextSlide('gallery7')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery7-dots"><div class="slide-dot active" onclick="goSlide('gallery7',0)"></div><div class="slide-dot" onclick="goSlide('gallery7',1)"></div><div class="slide-dot" onclick="goSlide('gallery7',2)"></div><div class="slide-dot" onclick="goSlide('gallery7',3)"></div><div class="slide-dot" onclick="goSlide('gallery7',4)"></div><div class="slide-dot" onclick="goSlide('gallery7',5)"></div></div>
+</div>
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Precision Nephrology Briefing — 6 Slides</div>
+<div class="slide-carousel" id="gallery8" data-index="0" data-total="6">
+<div class="slide-track"><img src="slides/Nephrology/slide_1.jpg" alt="Precision Nephrology Briefing Slide 1" loading="lazy"><img src="slides/Nephrology/slide_2.jpg" alt="Precision Nephrology Briefing Slide 2" loading="lazy"><img src="slides/Nephrology/slide_3.jpg" alt="Precision Nephrology Briefing Slide 3" loading="lazy"><img src="slides/Nephrology/slide_4.jpg" alt="Precision Nephrology Briefing Slide 4" loading="lazy"><img src="slides/Nephrology/slide_5.jpg" alt="Precision Nephrology Briefing Slide 5" loading="lazy"><img src="slides/Nephrology/slide_6.jpg" alt="Precision Nephrology Briefing Slide 6" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery8')">&#8249;</button>
+<span class="slide-counter" id="gallery8-counter">1 / 6</span>
+<button class="slide-btn" onclick="nextSlide('gallery8')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery8-dots"><div class="slide-dot active" onclick="goSlide('gallery8',0)"></div><div class="slide-dot" onclick="goSlide('gallery8',1)"></div><div class="slide-dot" onclick="goSlide('gallery8',2)"></div><div class="slide-dot" onclick="goSlide('gallery8',3)"></div><div class="slide-dot" onclick="goSlide('gallery8',4)"></div><div class="slide-dot" onclick="goSlide('gallery8',5)"></div></div>
+</div>
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Precision Nephrology Briefing (Q&A) — 6 Slides</div>
+<div class="slide-carousel" id="gallery9" data-index="0" data-total="6">
+<div class="slide-track"><img src="slides/Nephrology_Q/slide_1.jpg" alt="Precision Nephrology Briefing (Q&A) Slide 1" loading="lazy"><img src="slides/Nephrology_Q/slide_2.jpg" alt="Precision Nephrology Briefing (Q&A) Slide 2" loading="lazy"><img src="slides/Nephrology_Q/slide_3.jpg" alt="Precision Nephrology Briefing (Q&A) Slide 3" loading="lazy"><img src="slides/Nephrology_Q/slide_4.jpg" alt="Precision Nephrology Briefing (Q&A) Slide 4" loading="lazy"><img src="slides/Nephrology_Q/slide_5.jpg" alt="Precision Nephrology Briefing (Q&A) Slide 5" loading="lazy"><img src="slides/Nephrology_Q/slide_6.jpg" alt="Precision Nephrology Briefing (Q&A) Slide 6" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery9')">&#8249;</button>
+<span class="slide-counter" id="gallery9-counter">1 / 6</span>
+<button class="slide-btn" onclick="nextSlide('gallery9')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery9-dots"><div class="slide-dot active" onclick="goSlide('gallery9',0)"></div><div class="slide-dot" onclick="goSlide('gallery9',1)"></div><div class="slide-dot" onclick="goSlide('gallery9',2)"></div><div class="slide-dot" onclick="goSlide('gallery9',3)"></div><div class="slide-dot" onclick="goSlide('gallery9',4)"></div><div class="slide-dot" onclick="goSlide('gallery9',5)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -920,6 +1083,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="callout-title">Regulatory Tailwind as Commercial Moat</div>
 <p style="font-size:.9rem;color:var(--text2);margin:0">Every new FDA guidance raising the mechanistic proof bar <strong style="color:var(--text)">increases BiRAGAS&rsquo;s value</strong> and makes it harder for correlation-based competitors to comply. This is an externally driven tailwind largely independent of company execution.</p>
 </div>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">FDA Regulatory Pathway Presentation — 9 Slides</div>
+<div class="slide-carousel" id="gallery10" data-index="0" data-total="9">
+<div class="slide-track"><img src="slides/Q8/slide_1.jpg" alt="FDA Regulatory Pathway Presentation Slide 1" loading="lazy"><img src="slides/Q8/slide_2.jpg" alt="FDA Regulatory Pathway Presentation Slide 2" loading="lazy"><img src="slides/Q8/slide_3.jpg" alt="FDA Regulatory Pathway Presentation Slide 3" loading="lazy"><img src="slides/Q8/slide_4.jpg" alt="FDA Regulatory Pathway Presentation Slide 4" loading="lazy"><img src="slides/Q8/slide_5.jpg" alt="FDA Regulatory Pathway Presentation Slide 5" loading="lazy"><img src="slides/Q8/slide_6.jpg" alt="FDA Regulatory Pathway Presentation Slide 6" loading="lazy"><img src="slides/Q8/slide_7.jpg" alt="FDA Regulatory Pathway Presentation Slide 7" loading="lazy"><img src="slides/Q8/slide_8.jpg" alt="FDA Regulatory Pathway Presentation Slide 8" loading="lazy"><img src="slides/Q8/slide_9.jpg" alt="FDA Regulatory Pathway Presentation Slide 9" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery10')">&#8249;</button>
+<span class="slide-counter" id="gallery10-counter">1 / 9</span>
+<button class="slide-btn" onclick="nextSlide('gallery10')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery10-dots"><div class="slide-dot active" onclick="goSlide('gallery10',0)"></div><div class="slide-dot" onclick="goSlide('gallery10',1)"></div><div class="slide-dot" onclick="goSlide('gallery10',2)"></div><div class="slide-dot" onclick="goSlide('gallery10',3)"></div><div class="slide-dot" onclick="goSlide('gallery10',4)"></div><div class="slide-dot" onclick="goSlide('gallery10',5)"></div><div class="slide-dot" onclick="goSlide('gallery10',6)"></div><div class="slide-dot" onclick="goSlide('gallery10',7)"></div><div class="slide-dot" onclick="goSlide('gallery10',8)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -940,6 +1119,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <li><strong>Trade Secret Protection:</strong> Multi-agent orchestration, confidence calibration, and training data curation maintained via NDAs and employment agreements.</li>
 </ul>
 <p>Even if a competitor designs around a single patent, the biological database, lab infrastructure, and accumulated biomarker IP provide durable advantage.</p>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">IP Strategy Presentation — 7 Slides</div>
+<div class="slide-carousel" id="gallery11" data-index="0" data-total="7">
+<div class="slide-track"><img src="slides/Q9/slide_1.jpg" alt="IP Strategy Presentation Slide 1" loading="lazy"><img src="slides/Q9/slide_2.jpg" alt="IP Strategy Presentation Slide 2" loading="lazy"><img src="slides/Q9/slide_3.jpg" alt="IP Strategy Presentation Slide 3" loading="lazy"><img src="slides/Q9/slide_4.jpg" alt="IP Strategy Presentation Slide 4" loading="lazy"><img src="slides/Q9/slide_5.jpg" alt="IP Strategy Presentation Slide 5" loading="lazy"><img src="slides/Q9/slide_6.jpg" alt="IP Strategy Presentation Slide 6" loading="lazy"><img src="slides/Q9/slide_7.jpg" alt="IP Strategy Presentation Slide 7" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery11')">&#8249;</button>
+<span class="slide-counter" id="gallery11-counter">1 / 7</span>
+<button class="slide-btn" onclick="nextSlide('gallery11')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery11-dots"><div class="slide-dot active" onclick="goSlide('gallery11',0)"></div><div class="slide-dot" onclick="goSlide('gallery11',1)"></div><div class="slide-dot" onclick="goSlide('gallery11',2)"></div><div class="slide-dot" onclick="goSlide('gallery11',3)"></div><div class="slide-dot" onclick="goSlide('gallery11',4)"></div><div class="slide-dot" onclick="goSlide('gallery11',5)"></div><div class="slide-dot" onclick="goSlide('gallery11',6)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -1012,6 +1207,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <li><strong>Regulatory Affairs (10%):</strong> Pre-submission FDA meetings, BQP submissions, CDx filings.</li>
 <li><strong>Operations &amp; Working Capital (10%):</strong> CLIA expansion, personnel, operating runway through revenue inflection.</li>
 </ul>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Revenue Streams & Financial Model — 8 Slides</div>
+<div class="slide-carousel" id="gallery12" data-index="0" data-total="8">
+<div class="slide-track"><img src="slides/Q10/slide_1.jpg" alt="Revenue Streams & Financial Model Slide 1" loading="lazy"><img src="slides/Q10/slide_2.jpg" alt="Revenue Streams & Financial Model Slide 2" loading="lazy"><img src="slides/Q10/slide_3.jpg" alt="Revenue Streams & Financial Model Slide 3" loading="lazy"><img src="slides/Q10/slide_4.jpg" alt="Revenue Streams & Financial Model Slide 4" loading="lazy"><img src="slides/Q10/slide_5.jpg" alt="Revenue Streams & Financial Model Slide 5" loading="lazy"><img src="slides/Q10/slide_6.jpg" alt="Revenue Streams & Financial Model Slide 6" loading="lazy"><img src="slides/Q10/slide_7.jpg" alt="Revenue Streams & Financial Model Slide 7" loading="lazy"><img src="slides/Q10/slide_8.jpg" alt="Revenue Streams & Financial Model Slide 8" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery12')">&#8249;</button>
+<span class="slide-counter" id="gallery12-counter">1 / 8</span>
+<button class="slide-btn" onclick="nextSlide('gallery12')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery12-dots"><div class="slide-dot active" onclick="goSlide('gallery12',0)"></div><div class="slide-dot" onclick="goSlide('gallery12',1)"></div><div class="slide-dot" onclick="goSlide('gallery12',2)"></div><div class="slide-dot" onclick="goSlide('gallery12',3)"></div><div class="slide-dot" onclick="goSlide('gallery12',4)"></div><div class="slide-dot" onclick="goSlide('gallery12',5)"></div><div class="slide-dot" onclick="goSlide('gallery12',6)"></div><div class="slide-dot" onclick="goSlide('gallery12',7)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -1033,6 +1244,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="callout-title">De-Risking Significance</div>
 <p style="font-size:.9rem;color:var(--text2);margin:0">BiRAGAS has already passed the critical &ldquo;does this produce credible, usable results?&rdquo; validation gate. The platform is <strong style="color:var(--text)">operationally validated by organizations whose scientific reputations depend on the quality of the tools they use</strong>.</p>
 </div>
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Partnerships & De-risking — 7 Slides</div>
+<div class="slide-carousel" id="gallery13" data-index="0" data-total="7">
+<div class="slide-track"><img src="slides/Q11/slide_1.jpg" alt="Partnerships & De-risking Slide 1" loading="lazy"><img src="slides/Q11/slide_2.jpg" alt="Partnerships & De-risking Slide 2" loading="lazy"><img src="slides/Q11/slide_3.jpg" alt="Partnerships & De-risking Slide 3" loading="lazy"><img src="slides/Q11/slide_4.jpg" alt="Partnerships & De-risking Slide 4" loading="lazy"><img src="slides/Q11/slide_5.jpg" alt="Partnerships & De-risking Slide 5" loading="lazy"><img src="slides/Q11/slide_6.jpg" alt="Partnerships & De-risking Slide 6" loading="lazy"><img src="slides/Q11/slide_7.jpg" alt="Partnerships & De-risking Slide 7" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery13')">&#8249;</button>
+<span class="slide-counter" id="gallery13-counter">1 / 7</span>
+<button class="slide-btn" onclick="nextSlide('gallery13')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery13-dots"><div class="slide-dot active" onclick="goSlide('gallery13',0)"></div><div class="slide-dot" onclick="goSlide('gallery13',1)"></div><div class="slide-dot" onclick="goSlide('gallery13',2)"></div><div class="slide-dot" onclick="goSlide('gallery13',3)"></div><div class="slide-dot" onclick="goSlide('gallery13',4)"></div><div class="slide-dot" onclick="goSlide('gallery13',5)"></div><div class="slide-dot" onclick="goSlide('gallery13',6)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -1232,6 +1459,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <p style="font-size:.9rem;color:var(--text2);margin:0">We have engineered out speculative risk to deliver a hardened causal inference engine backed by a <strong style="color:var(--text)">15-year data advantage</strong>, <strong style="color:var(--text)">CLIA validation</strong>, and <strong style="color:var(--text)">FDA-aligned mechanistic rigor</strong>. Ayass Bioscience LLC is prepared for accelerated enterprise deployment.</p>
 </div>
 
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Risk Management & Competitive Moat — 13 Slides</div>
+<div class="slide-carousel" id="gallery14" data-index="0" data-total="13">
+<div class="slide-track"><img src="slides/Q13/slide_1.jpg" alt="Risk Management & Competitive Moat Slide 1" loading="lazy"><img src="slides/Q13/slide_10.jpg" alt="Risk Management & Competitive Moat Slide 2" loading="lazy"><img src="slides/Q13/slide_11.jpg" alt="Risk Management & Competitive Moat Slide 3" loading="lazy"><img src="slides/Q13/slide_12.jpg" alt="Risk Management & Competitive Moat Slide 4" loading="lazy"><img src="slides/Q13/slide_13.jpg" alt="Risk Management & Competitive Moat Slide 5" loading="lazy"><img src="slides/Q13/slide_2.jpg" alt="Risk Management & Competitive Moat Slide 6" loading="lazy"><img src="slides/Q13/slide_3.jpg" alt="Risk Management & Competitive Moat Slide 7" loading="lazy"><img src="slides/Q13/slide_4.jpg" alt="Risk Management & Competitive Moat Slide 8" loading="lazy"><img src="slides/Q13/slide_5.jpg" alt="Risk Management & Competitive Moat Slide 9" loading="lazy"><img src="slides/Q13/slide_6.jpg" alt="Risk Management & Competitive Moat Slide 10" loading="lazy"><img src="slides/Q13/slide_7.jpg" alt="Risk Management & Competitive Moat Slide 11" loading="lazy"><img src="slides/Q13/slide_8.jpg" alt="Risk Management & Competitive Moat Slide 12" loading="lazy"><img src="slides/Q13/slide_9.jpg" alt="Risk Management & Competitive Moat Slide 13" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery14')">&#8249;</button>
+<span class="slide-counter" id="gallery14-counter">1 / 13</span>
+<button class="slide-btn" onclick="nextSlide('gallery14')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery14-dots"><div class="slide-dot active" onclick="goSlide('gallery14',0)"></div><div class="slide-dot" onclick="goSlide('gallery14',1)"></div><div class="slide-dot" onclick="goSlide('gallery14',2)"></div><div class="slide-dot" onclick="goSlide('gallery14',3)"></div><div class="slide-dot" onclick="goSlide('gallery14',4)"></div><div class="slide-dot" onclick="goSlide('gallery14',5)"></div><div class="slide-dot" onclick="goSlide('gallery14',6)"></div><div class="slide-dot" onclick="goSlide('gallery14',7)"></div><div class="slide-dot" onclick="goSlide('gallery14',8)"></div><div class="slide-dot" onclick="goSlide('gallery14',9)"></div><div class="slide-dot" onclick="goSlide('gallery14',10)"></div><div class="slide-dot" onclick="goSlide('gallery14',11)"></div><div class="slide-dot" onclick="goSlide('gallery14',12)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -1305,6 +1548,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
   </div>
 </div>
 <div class="chart-subtitle">De-risked path to high-multiple strategic acquisition or IPO</div>
+</div>
+
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Series A Value Creation Roadmap — 8 Slides</div>
+<div class="slide-carousel" id="gallery15" data-index="0" data-total="8">
+<div class="slide-track"><img src="slides/Q14/slide_1.jpg" alt="Series A Value Creation Roadmap Slide 1" loading="lazy"><img src="slides/Q14/slide_2.jpg" alt="Series A Value Creation Roadmap Slide 2" loading="lazy"><img src="slides/Q14/slide_3.jpg" alt="Series A Value Creation Roadmap Slide 3" loading="lazy"><img src="slides/Q14/slide_4.jpg" alt="Series A Value Creation Roadmap Slide 4" loading="lazy"><img src="slides/Q14/slide_5.jpg" alt="Series A Value Creation Roadmap Slide 5" loading="lazy"><img src="slides/Q14/slide_6.jpg" alt="Series A Value Creation Roadmap Slide 6" loading="lazy"><img src="slides/Q14/slide_7.jpg" alt="Series A Value Creation Roadmap Slide 7" loading="lazy"><img src="slides/Q14/slide_8.jpg" alt="Series A Value Creation Roadmap Slide 8" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery15')">&#8249;</button>
+<span class="slide-counter" id="gallery15-counter">1 / 8</span>
+<button class="slide-btn" onclick="nextSlide('gallery15')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery15-dots"><div class="slide-dot active" onclick="goSlide('gallery15',0)"></div><div class="slide-dot" onclick="goSlide('gallery15',1)"></div><div class="slide-dot" onclick="goSlide('gallery15',2)"></div><div class="slide-dot" onclick="goSlide('gallery15',3)"></div><div class="slide-dot" onclick="goSlide('gallery15',4)"></div><div class="slide-dot" onclick="goSlide('gallery15',5)"></div><div class="slide-dot" onclick="goSlide('gallery15',6)"></div><div class="slide-dot" onclick="goSlide('gallery15',7)"></div></div>
 </div>
 
 </div></div>
@@ -1425,6 +1684,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
   </div>
 </div>
 <div class="chart-subtitle">The risk-adjusted return profile for early Series A investors is exceptionally compelling relative to comparable life science AI investments.</div>
+</div>
+
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Success Milestones — 3 & 5 Year — 8 Slides</div>
+<div class="slide-carousel" id="gallery16" data-index="0" data-total="8">
+<div class="slide-track"><img src="slides/Q15/slide_1.jpg" alt="Success Milestones — 3 & 5 Year Slide 1" loading="lazy"><img src="slides/Q15/slide_2.jpg" alt="Success Milestones — 3 & 5 Year Slide 2" loading="lazy"><img src="slides/Q15/slide_3.jpg" alt="Success Milestones — 3 & 5 Year Slide 3" loading="lazy"><img src="slides/Q15/slide_4.jpg" alt="Success Milestones — 3 & 5 Year Slide 4" loading="lazy"><img src="slides/Q15/slide_5.jpg" alt="Success Milestones — 3 & 5 Year Slide 5" loading="lazy"><img src="slides/Q15/slide_6.jpg" alt="Success Milestones — 3 & 5 Year Slide 6" loading="lazy"><img src="slides/Q15/slide_7.jpg" alt="Success Milestones — 3 & 5 Year Slide 7" loading="lazy"><img src="slides/Q15/slide_8.jpg" alt="Success Milestones — 3 & 5 Year Slide 8" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery16')">&#8249;</button>
+<span class="slide-counter" id="gallery16-counter">1 / 8</span>
+<button class="slide-btn" onclick="nextSlide('gallery16')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery16-dots"><div class="slide-dot active" onclick="goSlide('gallery16',0)"></div><div class="slide-dot" onclick="goSlide('gallery16',1)"></div><div class="slide-dot" onclick="goSlide('gallery16',2)"></div><div class="slide-dot" onclick="goSlide('gallery16',3)"></div><div class="slide-dot" onclick="goSlide('gallery16',4)"></div><div class="slide-dot" onclick="goSlide('gallery16',5)"></div><div class="slide-dot" onclick="goSlide('gallery16',6)"></div><div class="slide-dot" onclick="goSlide('gallery16',7)"></div></div>
 </div>
 
 </div></div>
@@ -1667,6 +1942,22 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 </div>
 </div>
 
+
+
+<!-- PRESENTATION SLIDES -->
+<div class="slide-gallery fade-in">
+<div class="slide-gallery-title">Exit Strategy & Transaction Values — 13 Slides</div>
+<div class="slide-carousel" id="gallery17" data-index="0" data-total="13">
+<div class="slide-track"><img src="slides/Q16/slide_1.jpg" alt="Exit Strategy & Transaction Values Slide 1" loading="lazy"><img src="slides/Q16/slide_10.jpg" alt="Exit Strategy & Transaction Values Slide 2" loading="lazy"><img src="slides/Q16/slide_11.jpg" alt="Exit Strategy & Transaction Values Slide 3" loading="lazy"><img src="slides/Q16/slide_12.jpg" alt="Exit Strategy & Transaction Values Slide 4" loading="lazy"><img src="slides/Q16/slide_13.jpg" alt="Exit Strategy & Transaction Values Slide 5" loading="lazy"><img src="slides/Q16/slide_2.jpg" alt="Exit Strategy & Transaction Values Slide 6" loading="lazy"><img src="slides/Q16/slide_3.jpg" alt="Exit Strategy & Transaction Values Slide 7" loading="lazy"><img src="slides/Q16/slide_4.jpg" alt="Exit Strategy & Transaction Values Slide 8" loading="lazy"><img src="slides/Q16/slide_5.jpg" alt="Exit Strategy & Transaction Values Slide 9" loading="lazy"><img src="slides/Q16/slide_6.jpg" alt="Exit Strategy & Transaction Values Slide 10" loading="lazy"><img src="slides/Q16/slide_7.jpg" alt="Exit Strategy & Transaction Values Slide 11" loading="lazy"><img src="slides/Q16/slide_8.jpg" alt="Exit Strategy & Transaction Values Slide 12" loading="lazy"><img src="slides/Q16/slide_9.jpg" alt="Exit Strategy & Transaction Values Slide 13" loading="lazy"></div>
+</div>
+<div class="slide-nav">
+<button class="slide-btn" onclick="prevSlide('gallery17')">&#8249;</button>
+<span class="slide-counter" id="gallery17-counter">1 / 13</span>
+<button class="slide-btn" onclick="nextSlide('gallery17')">&#8250;</button>
+</div>
+<div class="slide-dots" id="gallery17-dots"><div class="slide-dot active" onclick="goSlide('gallery17',0)"></div><div class="slide-dot" onclick="goSlide('gallery17',1)"></div><div class="slide-dot" onclick="goSlide('gallery17',2)"></div><div class="slide-dot" onclick="goSlide('gallery17',3)"></div><div class="slide-dot" onclick="goSlide('gallery17',4)"></div><div class="slide-dot" onclick="goSlide('gallery17',5)"></div><div class="slide-dot" onclick="goSlide('gallery17',6)"></div><div class="slide-dot" onclick="goSlide('gallery17',7)"></div><div class="slide-dot" onclick="goSlide('gallery17',8)"></div><div class="slide-dot" onclick="goSlide('gallery17',9)"></div><div class="slide-dot" onclick="goSlide('gallery17',10)"></div><div class="slide-dot" onclick="goSlide('gallery17',11)"></div><div class="slide-dot" onclick="goSlide('gallery17',12)"></div></div>
+</div>
+
 </div></div>
 <div class="section-divider"></div>
 
@@ -1725,6 +2016,39 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const t = document.querySelector(a.getAttribute('href'));
     if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
   });
+});
+
+// Slide carousel navigation
+function goSlide(id, idx) {
+  const el = document.getElementById(id);
+  const total = parseInt(el.dataset.total);
+  if (idx < 0) idx = total - 1;
+  if (idx >= total) idx = 0;
+  el.dataset.index = idx;
+  el.querySelector('.slide-track').style.transform = 'translateX(-' + (idx * 100) + '%)';
+  document.getElementById(id + '-counter').textContent = (idx + 1) + ' / ' + total;
+  const dots = document.querySelectorAll('#' + id + '-dots .slide-dot');
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+}
+function nextSlide(id) { goSlide(id, parseInt(document.getElementById(id).dataset.index) + 1); }
+function prevSlide(id) { goSlide(id, parseInt(document.getElementById(id).dataset.index) - 1); }
+// Keyboard navigation for focused gallery
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+    const galleries = document.querySelectorAll('.slide-carousel');
+    // Find the most visible gallery
+    let best = null, bestVis = 0;
+    galleries.forEach(g => {
+      const r = g.getBoundingClientRect();
+      const vis = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0));
+      if (vis > bestVis) { bestVis = vis; best = g; }
+    });
+    if (best) {
+      const idx = parseInt(best.dataset.index);
+      if (e.key === 'ArrowRight') goSlide(best.id, idx + 1);
+      else goSlide(best.id, idx - 1);
+    }
+  }
 });
 </script>
 </body>
