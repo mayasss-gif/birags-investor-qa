@@ -140,6 +140,9 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 .slide-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);transition:all .2s;cursor:pointer}
 .slide-dot.active{background:var(--accent);width:18px;border-radius:3px}
 
+/* SAFETY: ensure content always becomes visible */
+.fade-in.visible,.no-js .fade-in{opacity:1!important;transform:translateY(0)!important}
+
 /* CHARTS */
 .chart-container{margin:2rem 0;padding:2rem;background:var(--glass);border:1px solid var(--border);border-radius:var(--radius)}
 .chart-title{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:1.5rem;text-align:center}
@@ -449,7 +452,7 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="slide-gallery fade-in">
 <div class="slide-gallery-title">BiRAGAS Overview — Extended — 15 Slides</div>
 <div class="slide-carousel" id="gallery1" data-index="0" data-total="15">
-<div class="slide-track"><img src="slides/Q1(b)/slide_1.jpg" alt="BiRAGAS Overview — Extended Slide 1" loading="lazy"><img src="slides/Q1(b)/slide_2.jpg" alt="BiRAGAS Overview — Extended Slide 2" loading="lazy"><img src="slides/Q1(b)/slide_3.jpg" alt="BiRAGAS Overview — Extended Slide 3" loading="lazy"><img src="slides/Q1(b)/slide_4.jpg" alt="BiRAGAS Overview — Extended Slide 4" loading="lazy"><img src="slides/Q1(b)/slide_5.jpg" alt="BiRAGAS Overview — Extended Slide 5" loading="lazy"><img src="slides/Q1(b)/slide_6.jpg" alt="BiRAGAS Overview — Extended Slide 6" loading="lazy"><img src="slides/Q1(b)/slide_7.jpg" alt="BiRAGAS Overview — Extended Slide 7" loading="lazy"><img src="slides/Q1(b)/slide_8.jpg" alt="BiRAGAS Overview — Extended Slide 8" loading="lazy"><img src="slides/Q1(b)/slide_9.jpg" alt="BiRAGAS Overview — Extended Slide 9" loading="lazy"><img src="slides/Q1(b)/slide_10.jpg" alt="BiRAGAS Overview — Extended Slide 10" loading="lazy"><img src="slides/Q1(b)/slide_11.jpg" alt="BiRAGAS Overview — Extended Slide 11" loading="lazy"><img src="slides/Q1(b)/slide_12.jpg" alt="BiRAGAS Overview — Extended Slide 12" loading="lazy"><img src="slides/Q1(b)/slide_13.jpg" alt="BiRAGAS Overview — Extended Slide 13" loading="lazy"><img src="slides/Q1(b)/slide_14.jpg" alt="BiRAGAS Overview — Extended Slide 14" loading="lazy"><img src="slides/Q1(b)/slide_15.jpg" alt="BiRAGAS Overview — Extended Slide 15" loading="lazy"></div>
+<div class="slide-track"><img src="slides/Q1b/slide_1.jpg" alt="BiRAGAS Overview — Extended Slide 1" loading="lazy"><img src="slides/Q1b/slide_2.jpg" alt="BiRAGAS Overview — Extended Slide 2" loading="lazy"><img src="slides/Q1b/slide_3.jpg" alt="BiRAGAS Overview — Extended Slide 3" loading="lazy"><img src="slides/Q1b/slide_4.jpg" alt="BiRAGAS Overview — Extended Slide 4" loading="lazy"><img src="slides/Q1b/slide_5.jpg" alt="BiRAGAS Overview — Extended Slide 5" loading="lazy"><img src="slides/Q1b/slide_6.jpg" alt="BiRAGAS Overview — Extended Slide 6" loading="lazy"><img src="slides/Q1b/slide_7.jpg" alt="BiRAGAS Overview — Extended Slide 7" loading="lazy"><img src="slides/Q1b/slide_8.jpg" alt="BiRAGAS Overview — Extended Slide 8" loading="lazy"><img src="slides/Q1b/slide_9.jpg" alt="BiRAGAS Overview — Extended Slide 9" loading="lazy"><img src="slides/Q1b/slide_10.jpg" alt="BiRAGAS Overview — Extended Slide 10" loading="lazy"><img src="slides/Q1b/slide_11.jpg" alt="BiRAGAS Overview — Extended Slide 11" loading="lazy"><img src="slides/Q1b/slide_12.jpg" alt="BiRAGAS Overview — Extended Slide 12" loading="lazy"><img src="slides/Q1b/slide_13.jpg" alt="BiRAGAS Overview — Extended Slide 13" loading="lazy"><img src="slides/Q1b/slide_14.jpg" alt="BiRAGAS Overview — Extended Slide 14" loading="lazy"><img src="slides/Q1b/slide_15.jpg" alt="BiRAGAS Overview — Extended Slide 15" loading="lazy"></div>
 </div>
 <div class="slide-nav">
 <button class="slide-btn" onclick="prevSlide('gallery1')">&#8249;</button>
@@ -1999,56 +2002,75 @@ footer .conf{background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.1
 <div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</div>
 
 <script>
-// Intersection Observer for fade-in
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+try {
+  // FAILSAFE: make all content visible after 2 seconds no matter what
+  setTimeout(function(){ document.querySelectorAll('.fade-in').forEach(function(el){ el.classList.add('visible'); }); }, 2000);
 
-// Back to top button
-const bt = document.getElementById('backTop');
-window.addEventListener('scroll', () => { bt.classList.toggle('show', window.scrollY > 600) });
+  // Intersection Observer for fade-in
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:0.05, rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  // Back to top button
+  var bt = document.getElementById('backTop');
+  window.addEventListener('scroll', function() { bt.classList.toggle('show', window.scrollY > 600); });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var href = a.getAttribute('href');
+      var t = document.querySelector(href);
+      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
   });
-});
+} catch(err) {
+  // If anything fails, force all content visible
+  document.querySelectorAll('.fade-in').forEach(function(el){ el.classList.add('visible'); });
+  console.error('Init error:', err);
+}
 
 // Slide carousel navigation
 function goSlide(id, idx) {
-  const el = document.getElementById(id);
-  const total = parseInt(el.dataset.total);
-  if (idx < 0) idx = total - 1;
-  if (idx >= total) idx = 0;
-  el.dataset.index = idx;
-  el.querySelector('.slide-track').style.transform = 'translateX(-' + (idx * 100) + '%)';
-  document.getElementById(id + '-counter').textContent = (idx + 1) + ' / ' + total;
-  const dots = document.querySelectorAll('#' + id + '-dots .slide-dot');
-  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-}
-function nextSlide(id) { goSlide(id, parseInt(document.getElementById(id).dataset.index) + 1); }
-function prevSlide(id) { goSlide(id, parseInt(document.getElementById(id).dataset.index) - 1); }
-// Keyboard navigation for focused gallery
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-    const galleries = document.querySelectorAll('.slide-carousel');
-    // Find the most visible gallery
-    let best = null, bestVis = 0;
-    galleries.forEach(g => {
-      const r = g.getBoundingClientRect();
-      const vis = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0));
-      if (vis > bestVis) { bestVis = vis; best = g; }
-    });
-    if (best) {
-      const idx = parseInt(best.dataset.index);
-      if (e.key === 'ArrowRight') goSlide(best.id, idx + 1);
-      else goSlide(best.id, idx - 1);
+  try {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var total = parseInt(el.dataset.total);
+    if (idx < 0) idx = total - 1;
+    if (idx >= total) idx = 0;
+    el.dataset.index = idx;
+    var track = el.querySelector('.slide-track');
+    if (track) track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    var counter = document.getElementById(id + '-counter');
+    if (counter) counter.textContent = (idx + 1) + ' / ' + total;
+    var dotsEl = document.getElementById(id + '-dots');
+    if (dotsEl) {
+      dotsEl.querySelectorAll('.slide-dot').forEach(function(d, i) { d.classList.toggle('active', i === idx); });
     }
-  }
+  } catch(err) { console.error('Slide error:', err); }
+}
+function nextSlide(id) { var el = document.getElementById(id); if(el) goSlide(id, parseInt(el.dataset.index) + 1); }
+function prevSlide(id) { var el = document.getElementById(id); if(el) goSlide(id, parseInt(el.dataset.index) - 1); }
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+  try {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+      var galleries = document.querySelectorAll('.slide-carousel');
+      var best = null, bestVis = 0;
+      galleries.forEach(function(g) {
+        var r = g.getBoundingClientRect();
+        var vis = Math.max(0, Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0));
+        if (vis > bestVis) { bestVis = vis; best = g; }
+      });
+      if (best) {
+        var idx = parseInt(best.dataset.index);
+        if (e.key === 'ArrowRight') goSlide(best.id, idx + 1);
+        else goSlide(best.id, idx - 1);
+      }
+    }
+  } catch(err) {}
 });
 </script>
 </body>
